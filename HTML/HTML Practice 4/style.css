@@ -1,0 +1,27 @@
+table {
+  border-collapse: collapse;
+  width: 40%;
+}
+th,
+tr,
+td {
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+}
+caption {
+  text-align: left;
+  font-weight: bold;
+}
+thead th {
+  background-color: rgb(156, 220, 156);
+}
+tbody tr:last-child {
+  border-top: none;
+}
+ul {
+  padding-left: 20px;
+}
+ul li {
+  padding-left: 20px;
+}
