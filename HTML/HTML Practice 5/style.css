@@ -1,0 +1,20 @@
+.container {
+  height: 100vh;
+}
+.imgBox {
+  position: relative;
+  color: white;
+  background: rgb(61, 61, 61);
+}
+.imgBox img {
+  filter: brightness(50%);
+}
+.heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}

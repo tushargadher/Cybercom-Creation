@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Practice 5</title>
+    <meta name="viewpoint" content="width=device-width,initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- font-awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- main container -->
+    <div
+      class="container border d-flex align-items-center justify-content-center"
+    >
+      <!-- form container -->
+      <div class="border w-50 border h-75">
+        <div class="imgBox h-25">
+          <img
+            src="https://t4.ftcdn.net/jpg/02/81/89/73/360_F_281897358_3rj9ZBSZHo5s0L1ug7uuIHadSxh9Cc75.jpg"
+            alt=""
+            class="object-fit-cover h-100 w-100"
+          />
+          <p class="heading">CONTACT US</p>
+        </div>
+        <!-- form div -->
+        <div class="border h-75 p-5">
+          <form
+            action=""
+            class="h-100 w-100 d-flex flex-column justify-content-evenly"
+            onsubmit="handleSubmit()"
+          >
+            <div>
+              <input type="text" placeholder="FULL NAME" />
+            </div>
+            <input type="email" placeholder="Eg.example@gmail.com" />
+            <input type="text" placeholder="Eg.+ 1800 000000" />
+            <textarea
+              rows="5"
+              cols="10"
+              placeholder="Your Comments..."
+            ></textarea>
+            <button type="submit" class="btn btn-primary w-25" onclick="">
+              SEND NOW
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      function handleSubmit() {
+        alert("Your request has been submitted !");
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
