@@ -1,0 +1,14 @@
+.container {
+  height: 100vh;
+}
+.img {
+  height: 315px;
+  width: 215px;
+}
+.card {
+  border-radius: 0%;
+}
+.caption {
+  border-radius: 0%;
+  background-color: rgb(153, 152, 152);
+}
