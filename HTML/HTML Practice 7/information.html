@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Information Page</title>
+  </head>
+  <body></body>
+  <script>
+    var firstname = localStorage.getItem("firstname");
+    var password = localStorage.getItem("password");
+    var email = localStorage.getItem("email");
+    var phone = localStorage.getItem("phone");
+    var day = localStorage.getItem("day");
+    var month = localStorage.getItem("month");
+    var year = localStorage.getItem("year");
+
+    document.write(`<table border="1">
+      <tr>
+        <th>FirstName</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>DOB</th>
+        <th>Phone</th>
+      </tr>
+      <tr>
+        <td>${firstname}</td>
+        <td>${password}</td>
+        <td>${email}</td>
+        <td>${day} ${month} ${year}</td>
+        <td>${phone}</td>
+      </tr>
+    </table>`);
+  </script>
+</html>

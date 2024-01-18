@@ -4,10 +4,14 @@
     <title>HTML Practice 7</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <div class="container">
-      <form action="./information.php" method="post">
+      <form id="myForm">
         <!-- Personal Information -->
         <fieldset>
           <legend>Personal Information</legend>
@@ -25,7 +29,7 @@
             <tr>
               <td><label for="month">Date of Birth</label></td>
               <td class="flex">
-                <select name="month" required>
+                <select name="month" id="month" style="width: 30%" required>
                   <option value="" selected disabled>Month</option>
                   <option value="January">January</option>
                   <option value="February">February</option>
@@ -40,34 +44,46 @@
                   <option value="January">November</option>
                   <option value="January">December</option>
                 </select>
-                <select name="day" required>
+                <select name="day" id="day" required>
                   <option value="" selected disabled>Day</option>
                   <script>
-                    for (let i = 1; i <= 31; i++) {
+                    for (var i = 1; i <= 31; i++) {
                       document.write(`<option value="${i}">${i}</option>`);
                     }
                   </script>
                 </select>
 
-                <select name="year" required>
+                <select name="year" id="year" required>
                   <option value="" selected disabled>Year</option>
                   <script>
-                    for (let i = 2000; i <= 2024; i++) {
+                    for (var i = 2000; i <= 2024; i++) {
                       document.write(`<option value="${i}">${i}</option>`);
                     }
                   </script>
                 </select>
+                <div class="tooptip">
+                  <i
+                    class="fa-solid fa-question"
+                    title="Enter Birthdate in Month/Day/Year Formate"
+                  ></i>
+                </div>
               </td>
             </tr>
             <tr>
               <td><label for="lastname">Gender:</label></td>
-              <td>
+              <td class="flex">
                 <select>
                   <option value="" selected disabled>Choose a gender</option>
                   <option value="female">Female</option>
                   <option value="male">Male</option>
                   <option value="other">Other</option>
                 </select>
+                <div class="tooptip">
+                  <i
+                    class="fa-solid fa-question"
+                    title="Please Provide Gender"
+                  ></i>
+                </div>
               </td>
             </tr>
           </table>
@@ -80,6 +96,7 @@
               <td><label for="email">Email:</label></td>
               <td>
                 <input type="email" name="email" id="email" required />
+                <span>(Your email will be your username)</span>
               </td>
             </tr>
             <tr>
@@ -92,6 +109,7 @@
               <td><label for="password">Password :</label></td>
               <td>
                 <input type="password" name="password" id="password" required />
+                <span>(Min. 8 characters,1 number,case-sensitive)</span>
               </td>
             </tr>
             <tr>
@@ -107,7 +125,7 @@
             </tr>
             <tr>
               <td><label for="securityQues">Security Question:</label></td>
-              <td>
+              <td class="flex">
                 <select name="securityQues" id="securityQues">
                   <option value="" selected disabled>
                     Choose a security question
@@ -120,11 +138,20 @@
                   </option>
                   <option value="">What was the make of your first car?</option>
                 </select>
+                <div class="tooptip">
+                  <i
+                    class="fa-solid fa-question"
+                    title="Security Question will help in Account Recovery"
+                  ></i>
+                </div>
               </td>
             </tr>
             <tr>
               <td><label for="securityAns">Security Answer:</label></td>
-              <td><input type="text" name="securityAns" /></td>
+              <td>
+                <input type="text" name="securityAns" />
+                <span>(Not case-sensitive)</span>
+              </td>
             </tr>
           </table>
         </fieldset>
@@ -164,25 +191,39 @@
             </tr>
             <tr>
               <td><label for="zipcode">Zip Code:</label></td>
-              <td class="flex">
+              <td class="flex" style="width: 50%">
                 <input type="text" name="zipcode" id="zipcode" />
-                <input type="text" placeholder="Optional" disabled />
+                <input
+                  type="text"
+                  placeholder="Optional"
+                  disabled
+                  style="margin-left: 10px"
+                />
               </td>
             </tr>
             <tr>
               <td><label for="phone">Phone:</label></td>
-              <td class="flex">
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  pattern="[0-9]{10}"
-                  required
-                />
-                <select name="phonetype" id="phonetype">
-                  <option value="mobile">Mobile</option>
-                  <option value="telephone">Telephone</option>
-                </select>
+              <td>
+                <div class="flex">
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    pattern="[0-9]{10}"
+                    required
+                  />
+                  <div class="tooptip">
+                    <i
+                      class="fa-solid fa-question"
+                      title="Phone number will help for future communication"
+                    ></i>
+                  </div>
+                  <select name="phonetype" id="phonetype" style="width: 30%">
+                    <option value="mobile">Mobile</option>
+                    <option value="telephone">Telephone</option>
+                  </select>
+                </div>
+                <span>No space or dashes</span>
               </td>
             </tr>
           </table>
@@ -192,4 +233,40 @@
       </form>
     </div>
   </body>
+  <script
+    src="https://kit.fontawesome.com/e850630278.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    function customValidation() {
+      return true;
+    }
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault(e);
+
+      var firstname = document.getElementById("firstname").value;
+      var password = document.getElementById("password").value;
+      var email = document.getElementById("email").value;
+      var phone = document.getElementById("phone").value;
+      var day = document.getElementById("day").value;
+      var month = document.getElementById("month").value;
+      var year = document.getElementById("year").value;
+      var cemail = document.getElementById("cemail").value;
+      var cpassword = document.getElementById("cpassword").value;
+      if (email != cemail || password != cpassword) {
+        alert("Emails or Passwords Mismatch.");
+      } else {
+        localStorage.setItem("firstname", firstname);
+        localStorage.setItem("password", password);
+        localStorage.setItem("email", email);
+        localStorage.setItem("phone", phone);
+        localStorage.setItem("day", day);
+        localStorage.setItem("month", month);
+        localStorage.setItem("year", year);
+
+        window.location.href =
+          "http://127.0.0.1:5500/HTML%20Practice%207/information.html";
+      }
+    });
+  </script>
 </html>
