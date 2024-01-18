@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  /* width: 30vw; */
+  padding: 10px;
+  background-color: #eeeeee;
+}
+fieldset {
+  border: none;
+}
+legend {
+  font-weight: bold;
+}
+
+td {
+  text-align: end;
+  padding: 10px;
+}
+td:nth-child(2) {
+  text-align: start;
+}
+.btn {
+  padding: 5px 20px;
+  width: max-content;
+}
