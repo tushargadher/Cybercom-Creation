@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="">
+      <form action="./information.php" method="post">
         <!-- Personal Information -->
         <fieldset>
           <legend>Personal Information</legend>
@@ -24,9 +24,9 @@
             </tr>
             <tr>
               <td><label for="month">Date of Birth</label></td>
-              <td>
-                <!-- required field -->
-                <select name="month">
+              <td class="flex">
+                <select name="month" required>
+                  <option value="" selected disabled>Month</option>
                   <option value="January">January</option>
                   <option value="February">February</option>
                   <option value="March">March</option>
@@ -39,6 +39,23 @@
                   <option value="January">October</option>
                   <option value="January">November</option>
                   <option value="January">December</option>
+                </select>
+                <select name="day" required>
+                  <option value="" selected disabled>Day</option>
+                  <script>
+                    for (let i = 1; i <= 31; i++) {
+                      document.write(`<option value="${i}">${i}</option>`);
+                    }
+                  </script>
+                </select>
+
+                <select name="year" required>
+                  <option value="" selected disabled>Year</option>
+                  <script>
+                    for (let i = 2000; i <= 2024; i++) {
+                      document.write(`<option value="${i}">${i}</option>`);
+                    }
+                  </script>
                 </select>
               </td>
             </tr>
@@ -132,22 +149,39 @@
               <td>
                 <select name="state" id="state">
                   <option value="" selected disabled>Choose a state</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td><label for="zipcode">Zip Code:</label></td>
-              <td>
+              <td class="flex">
                 <input type="text" name="zipcode" id="zipcode" />
                 <input type="text" placeholder="Optional" disabled />
               </td>
             </tr>
             <tr>
               <td><label for="phone">Phone:</label></td>
-              <td>
-                <input type="text" name="phone" id="phone" required />
+              <td class="flex">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  pattern="[0-9]{10}"
+                  required
+                />
                 <select name="phonetype" id="phonetype">
-                  <option value="mobile">mobile</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="telephone">Telephone</option>
                 </select>
               </td>
             </tr>
