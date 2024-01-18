@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+form {
+  padding: 20px;
+  width: 50vw;
+}
+tr,
+td {
+  vertical-align: top;
+  width: 200px;
+  padding: 5px;
+}
+.btn {
+  width: max-content;
+  padding: 5px 10px;
+  margin: 20px 10px 0 0;
+}
