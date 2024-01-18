@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .container {
   display: flex;
@@ -13,19 +14,31 @@ form {
 }
 fieldset {
   border: none;
+  padding: 10px 0;
 }
 legend {
   font-weight: bold;
 }
-
+input,
+select {
+  width: 100%;
+}
 td {
   text-align: end;
   padding: 10px;
+  /* border: 1px solid black; */
+}
+td:nth-child(1) {
+  width: 140px;
 }
 td:nth-child(2) {
   text-align: start;
+  width: 300px;
 }
 .btn {
   padding: 5px 20px;
   width: max-content;
+}
+.flex {
+  display: flex;
 }
