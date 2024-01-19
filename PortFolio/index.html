@@ -304,7 +304,7 @@
             </div>
 
             <div class="form">
-              <form action="">
+              <form action="" onsubmit="handleSubmit(e)">
                 <table>
                   <tr>
                     <td>
@@ -333,7 +333,7 @@
                   </tr>
                   <tr>
                     <td colspan="2">
-                      <button class="submitBtn">
+                      <button class="submitBtn" type="submit">
                         <p>SUBMIT</p>
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                       </button>
@@ -355,4 +355,10 @@
     src="https://kit.fontawesome.com/e850630278.js"
     crossorigin="anonymous"
   ></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Thank You! Your Message Is Send.");
+    }
+  </script>
 </html>

@@ -490,6 +490,21 @@ footer span {
     box-shadow: 10px 10px 15px lightblue;
   }
 }
-@keyframes ide {
-    
+
+/* responesive site */
+@media only screen and (max-width: 900px) {
+  nav span {
+    display: none;
+  }
+  nav {
+    justify-content: space-around;
+  }
+  .homecontainer,
+  .aboutContainer,
+  .eduDetail,
+  .skillContainer,
+  .projectContainer,
+  .contactContainer {
+    width: 90%;
+  }
 }
