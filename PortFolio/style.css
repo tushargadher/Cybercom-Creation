@@ -210,6 +210,7 @@ nav button:hover {
   flex-direction: column;
   color: white;
   /* justify-content: space-evenly; */
+  overflow: scroll;
 }
 .eduDetail:nth-child(3) {
   background-color: #101a2a;
@@ -253,7 +254,7 @@ nav button:hover {
   /* border: 1px solid white; */
 }
 .skillBox {
-  border: 1px solid wheat;
+  border: 1px solid white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -303,6 +304,7 @@ nav button:hover {
   padding: 60px 50px;
   border-radius: 10px;
   margin: 25px 0;
+  
 }
 .project:nth-child(2n + 1) {
   flex-direction: row-reverse;
@@ -506,5 +508,102 @@ footer span {
   .projectContainer,
   .contactContainer {
     width: 90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  nav {
+    justify-content: space-evenly;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    height: 12vh;
+  }
+  nav ul {
+    width: 100%;
+    padding-left: 0;
+  }
+  nav ul li {
+    font-size: 1rem;
+  }
+  .homecontainer,
+  .aboutContainer,
+  .eduDetail,
+  .skillContainer,
+  .projectContainer {
+    width: 90%;
+  }
+  .homecontainer img {
+    width: 80%;
+    margin-top: 5rem;
+  }
+  .homedescription p {
+    font-size: 1.2rem;
+  }
+  .btngroup {
+    width: 90%;
+  }
+  .btngroup button:first-child {
+    display: none;
+  }
+  #about {
+    height: auto;
+  }
+  .personInfo,
+  .eduction {
+    margin-top: 2rem;
+  }
+  .eductionInfo {
+    flex-direction: column;
+  }
+  .eduDetail {
+    margin: 10px;
+  }
+  #about {
+    height: auto;
+  }
+  .skillBox {
+    height: 20%;
+    width: 22%;
+    border: none;
+    box-shadow: none;
+  }
+  .project {
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+  }
+  .project:nth-child(2n + 1) {
+    flex-direction: column;
+  }
+  .proImg {
+    margin-top: 10px;
+  }
+  .proImg img {
+    width: 100%;
+  }
+
+  .contactContainer {
+    width: 100%;
+  }
+  .userContainer {
+    display: none;
+  }
+  .formContainer {
+    border-radius: 10px;
+    padding: 20px;
+    overflow: hidden;
+  }
+  .formheading,
+  .form {
+    padding: 15px;
+  }
+  .formheading h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .formheading p {
+    font-size: 0.8rem;
+  }
+  .submitBtn {
+    width: 50%;
   }
 }
