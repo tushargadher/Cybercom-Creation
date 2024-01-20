@@ -304,7 +304,6 @@ nav button:hover {
   padding: 60px 50px;
   border-radius: 10px;
   margin: 25px 0;
-  
 }
 .project:nth-child(2n + 1) {
   flex-direction: row-reverse;
@@ -494,23 +493,11 @@ footer span {
 }
 
 /* responesive site */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   nav span {
     display: none;
   }
-  nav {
-    justify-content: space-around;
-  }
-  .homecontainer,
-  .aboutContainer,
-  .eduDetail,
-  .skillContainer,
-  .projectContainer,
-  .contactContainer {
-    width: 90%;
-  }
-}
-@media only screen and (max-width: 600px) {
+
   nav {
     justify-content: space-evenly;
     flex-direction: column;
@@ -521,6 +508,18 @@ footer span {
     width: 100%;
     padding-left: 0;
   }
+
+  .homecontainer,
+  .aboutContainer,
+  .eduDetail,
+  .skillContainer,
+  .projectContainer,
+  .contactContainer {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  
   nav ul li {
     font-size: 1rem;
   }
@@ -533,13 +532,13 @@ footer span {
   }
   .homecontainer img {
     width: 80%;
-    margin-top: 5rem;
+    margin: 5rem 0 1rem 0;
   }
   .homedescription p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .btngroup {
-    width: 90%;
+    width: 100%;
   }
   .btngroup button:first-child {
     display: none;
@@ -565,6 +564,10 @@ footer span {
     width: 22%;
     border: none;
     box-shadow: none;
+  }
+  #portfolio h1 {
+    color: white;
+    margin: 2rem 2rem 0 2rem;
   }
   .project {
     flex-direction: column;
@@ -605,5 +608,8 @@ footer span {
   }
   .submitBtn {
     width: 50%;
+  }
+  #contact span {
+    margin: 2rem;
   }
 }
