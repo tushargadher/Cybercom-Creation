@@ -6,9 +6,16 @@
     <title>Home - Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="./imgs/favicon.png" />
     <link rel="stylesheet" href="style.css" />
+    <!-- aos css  -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <div class="container">
+      <!-- preloader -->
+      <div class="preloader">
+        <div class="left">left</div>
+        <div class="right">right</div>
+      </div>
       <!-- navbar -->
       <nav>
         <span>Tushar.</span>
@@ -81,7 +88,7 @@
         <h1>About Me</h1>
         <div class="aboutContainer">
           <!-- personl details -->
-          <div class="personInfo">
+          <div class="personInfo" data-aos="fade-up" data-aos-duration="1000">
             <span>KNOW MORE ABOUT ME</span>
             <div class="detail">
               <h2 style="color: #0065ff">Full Stack Web Developer</h2>
@@ -105,7 +112,11 @@
 
             <h2 style="color: #0065ff">Some Detail About eduction</h2>
             <div class="eductionInfo">
-              <div class="eduDetail">
+              <div
+                class="eduDetail"
+                data-aos="slide-right"
+                data-aos-duration="1000"
+              >
                 <b>2017- 2018</b>
                 <h2>Secondary School</h2>
                 <p>
@@ -113,7 +124,11 @@
                   Percetenge from Suman high school,surat.
                 </p>
               </div>
-              <div class="eduDetail">
+              <div
+                class="eduDetail"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <b>2018- 2021</b>
                 <h2>Diploma</h2>
                 <p>
@@ -122,7 +137,11 @@
                   Technology ,Surat.
                 </p>
               </div>
-              <div class="eduDetail">
+              <div
+                class="eduDetail"
+                data-aos="slide-left"
+                data-aos-duration="1000"
+              >
                 <b>2021 - 2024</b>
                 <h2>Degree</h2>
                 <p>
@@ -137,7 +156,7 @@
       <!-- skills container -->
       <section id="skills" class="section">
         <h1>My Skills</h1>
-        <div class="skillContainer">
+        <div class="skillContainer" data-aos="zoom-in" data-aos-duration="1000">
           <div class="skillBox">
             <img src="./imgs/html.png" alt="html" />
             <span>HTML</span>
@@ -180,7 +199,11 @@
       <section id="portfolio" class="section">
         <h1>Some of My Successful Projects</h1>
         <div class="projectContainer">
-          <div class="project">
+          <div
+            class="project"
+            data-aos="zoom-out-down"
+            data-aos-duration="1000"
+          >
             <div class="proDetails">
               <h2>FlipKart Clone</h2>
               <p>
@@ -195,7 +218,11 @@
               /></a>
             </div>
           </div>
-          <div class="project">
+          <div
+            class="project"
+            data-aos="zoom-out-down"
+            data-aos-duration="1000"
+          >
             <div class="proDetails">
               <h2>BookStore</h2>
               <p>
@@ -209,7 +236,11 @@
               /></a>
             </div>
           </div>
-          <div class="project">
+          <div
+            class="project"
+            data-aos="zoom-out-down"
+            data-aos-duration="1000"
+          >
             <div class="proDetails">
               <h2>ChatBox</h2>
               <p>
@@ -224,7 +255,11 @@
               </a>
             </div>
           </div>
-          <div class="project">
+          <div
+            class="project"
+            data-aos="zoom-out-down"
+            data-aos-duration="1000"
+          >
             <div class="proDetails">
               <h2>CloudNotes</h2>
               <p>
@@ -238,7 +273,11 @@
               </a>
             </div>
           </div>
-          <div class="project">
+          <div
+            class="project"
+            data-aos="zoom-out-down"
+            data-aos-duration="1000"
+          >
             <div class="proDetails">
               <h2>InMovies</h2>
               <p>
@@ -350,6 +389,10 @@
         <span>About this website: built with HTML and CSS</span>
       </footer>
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
   <script
     src="https://kit.fontawesome.com/e850630278.js"

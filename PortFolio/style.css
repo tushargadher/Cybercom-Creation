@@ -16,12 +16,106 @@ html {
 .container {
   width: 100vw;
   height: auto;
+  /* position: relative; */
 }
 .section {
   background-color: #030712;
   width: 100vw;
   height: auto;
 }
+/* preloader css */
+.preloader {
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: absolute;
+  /* display: none; */
+}
+.right,
+.left {
+  background-color: black;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+.right {
+  animation-name: openRightAnimation;
+  animation-duration: 2s;
+  left: 100%;
+}
+.left {
+  animation-name: openLeftAnimation;
+  animation-duration: 2s;
+  right: 100%;
+}
+
+@keyframes openRightAnimation {
+  10% {
+    left: 50%;
+  }
+  20% {
+    left: 60%;
+  }
+  30% {
+    left: 65%;
+  }
+  40% {
+    left: 70%;
+  }
+  50% {
+    left: 75%;
+  }
+  60% {
+    left: 80%;
+  }
+  70% {
+    left: 85%;
+  }
+  80% {
+    left: 90%;
+  }
+  90% {
+    left: 95%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes openLeftAnimation {
+  10% {
+    right: 50%;
+  }
+  20% {
+    right: 60%;
+  }
+  30% {
+    right: 65%;
+  }
+  40% {
+    right: 70%;
+  }
+  50% {
+    right: 75%;
+  }
+  60% {
+    right: 80%;
+  }
+  70% {
+    right: 85%;
+  }
+  80% {
+    right: 90%;
+  }
+  90% {
+    right: 95%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+
 /* navbar css */
 nav {
   display: flex;
@@ -33,7 +127,7 @@ nav {
   width: 100vw;
   backdrop-filter: blur(5px);
   color: white;
-  z-index: 9999;
+  z-index: 999;
 }
 nav span {
   font-size: 2rem;
@@ -519,7 +613,6 @@ footer span {
   }
 }
 @media only screen and (max-width: 600px) {
-  
   nav ul li {
     font-size: 1rem;
   }
