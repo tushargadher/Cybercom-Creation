@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Patient Medical History Form</title>
+    <!-- bootstrap link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    /* .form-select .error{
+        color: black;
+    } */
+    .error{
+        color: red;
+    }
+  </style>
+  <body>
+    <!-- main container -->
+    <div
+      class="container-fluid d-flex flex-column align-items-center bg-body-secondary"
+    >
+      <!-- form container -->
+      <div class="formContainer w-50 bg-white my-5">
+        <form id="form" action="#" method="get">
+          <!-- form header -->
+          <div class="px-5 py-4 border-bottom">
+            <p class="fs-2 fw-semibold">General Patient Information</p>
+          </div>
+          <!-- form body -->
+          <div class="p-5">
+            <!-- patient gender -->
+            <div class="row mb-5">
+              <div class="col">
+                <label class="fw-semibold pb-2" for="gender"
+                  >Patient Gender *</label
+                >
+                <select name="gender" id="gender" class="form-select">
+                  <option value="" disabled selected>Please Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="col"></div>
+            </div>
+            <!-- Patient name -->
+            <div class="row mb-5">
+              <label class="fw-semibold pb-2">Patient Name *</label>
+              <div class="col">
+                <!-- FirstName input -->
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="txtFirstName"
+                    name="txtFirstName"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="txtFirstName"
+                    >First Name</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <!-- LastName input -->
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="txtLastName"
+                    name="txtLastName"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="txtLastName">Last Name</label>
+                </div>
+              </div>
+            </div>
+            <!-- patient DOB -->
+            <div class="row mb-5">
+              <label class="fw-semibold pb-2" for="gender"
+                >Patient Birth Date*</label
+              >
+              <!-- month input -->
+              <div class="col">
+                <div class="form-outline">
+                  <select name="month" id="month" class="form-select">
+                    <option value="" disabled selected>
+                      Please select a month
+                    </option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="Augest">August</option>
+                    <option value="September">September</option>
+                    <option value="January">October</option>
+                    <option value="January">November</option>
+                    <option value="January">December</option>
+                  </select>
+                  <label class="form-label" for="month">Month</label>
+                </div>
+              </div>
+              <!-- day input -->
+              <div class="col">
+                <div class="form-outline">
+                  <select name="day" id="day" class="form-select">
+                    <option value="" disabled selected>
+                      Please select a day
+                    </option>
+                    <script>
+                      for (let i = 1; i <= 31; i++) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                      }
+                    </script>
+                  </select>
+                  <label class="form-label" for="day">Day</label>
+                </div>
+              </div>
+              <!-- month input -->
+              <div class="col">
+                <div class="form-outline">
+                  <select name="year" id="year" class="form-select">
+                    <option value="" selected disabled>
+                      Please seleact a year
+                    </option>
+                    <script>
+                      for (let i = 2024; i >= 1920; i--) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                      }
+                    </script>
+                  </select>
+                  <label class="form-label" for="year">year</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- patient height -->
+            <div class="row mb-5">
+              <div class="col">
+                <label class="form-label fw-semibold" for="patientHeight"
+                  >Patient Height (cm's)*</label
+                >
+                <input
+                  type="number"
+                  id="patientHeight"
+                  name="patientHeight"
+                  class="form-control"
+                  placeholder="ex: 176"
+                />
+              </div>
+              <div class="col"></div>
+            </div>
+
+            <!-- patient weight -->
+            <div class="row mb-5">
+              <div class="col">
+                <label class="form-label fw-semibold" for="patientWeight"
+                  >Patient Weight (kg's)*</label
+                >
+                <input
+                  type="number"
+                  id="patientWeight"
+                  name="patientWeight"
+                  class="form-control"
+                  placeholder="ex: 70"
+                />
+              </div>
+              <div class="col"></div>
+            </div>
+
+            <!-- patient email-->
+            <div class="row mb-5">
+              <label class="form-label fw-semibold" for="patientEmail"
+                >Patient E-Mail*</label
+              >
+              <div class="col">
+                <input
+                  type="email"
+                  id="patientEmail"
+                  name="patientEmail"
+                  class="form-control"
+                  placeholder="ex: myexample@example.com"
+                />
+                <span class="fs-6">example@example.com</span>
+              </div>
+              <div class="col"></div>
+            </div>
+            <!-- reason input -->
+            <div class="row mb-5">
+              <div class="col">
+                <label class="form-label fw-semibold" for="visitReason"
+                  >Reason for seeing the doctor:*
+                </label>
+                <input
+                  type="text"
+                  id="visitReason"
+                  name="visitReason"
+                  class="form-control"
+                />
+              </div>
+              <div class="col"></div>
+            </div>
+            <!-- medical History section   -->
+            <p class="fs-3 fw-semibold">Patient Medical History</p>
+            <hr />
+            <!-- drug allergies input -->
+            <div class="mb-5">
+              <label class="form-label fw-semibold" for="textArea"
+                >Please list any drug allergies
+              </label>
+              <textarea
+                class="form-control"
+                name="textArea"
+                id="textArea"
+                rows="5"
+              ></textarea>
+            </div>
+            <!-- ever had checkbox -->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">
+                Have you ever had (Please check all that apply)
+              </p>
+              <script>
+                const arraylist = [
+                  "Anemia",
+                  "Asthma",
+                  "Arthritis",
+                  "Cancer",
+                  "Gout",
+                  "Diabetes",
+                  "Emotional Disorder",
+                  "Epilepsy Seizures",
+                  "Fainting Spells",
+                  "Gallstones",
+                  "Heart Disease",
+                  "Heart Attack",
+                  "Rheumatic Fever",
+                  "High Blood Pressure",
+                  "Digestive Problems",
+                  "Ulcerative Colitis",
+                  "Ulcer Disease",
+                  "Hepatitis",
+                  "Kideny Disease",
+                  "Liver Disease",
+                  "Sleep Apnea",
+                  "Use a C-PAP machine",
+                  "Thyriod Problems",
+                  "Tuberculosis",
+                  "Venereal Disease",
+                  "Neurological Disorders",
+                  "Bleeding Disorders",
+                  "Lung Disease",
+                  "Emphysema",
+                ];
+                arraylist.forEach(function (value) {
+                  document.write(`<div class="form-check"><input
+                class="form-check-input"
+                type="checkbox"
+                value="${value}"
+                id="${value}"
+              />
+              <label class="form-check-label" for="${value}"> ${value} </label></div>`);
+                });
+              </script>
+            </div>
+
+            <!-- other illnesses -->
+            <div class="row mb-5">
+              <div class="col">
+                <label class="form-label fw-semibold" for="illnesses"
+                  >Other illnesses:
+                </label>
+                <input
+                  type="text"
+                  id="illnesses"
+                  name="illnesses"
+                  class="form-control"
+                />
+              </div>
+              <div class="col"></div>
+            </div>
+
+            <!-- Operations and Dates textarea -->
+            <div class="mb-5">
+              <label class="form-label fw-semibold" for="operationDates"
+                >Please list any Operations and Dates of Each
+              </label>
+              <textarea
+                class="form-control"
+                name="operationDates"
+                id="operationDates"
+                rows="6"
+              ></textarea>
+            </div>
+
+            <!-- currentMedication textarea-->
+            <div class="mb-5">
+              <label class="form-label fw-semibold" for="currentMedication"
+                >Please list your Current Medications
+              </label>
+              <textarea
+                class="form-control"
+                name="currentMedication"
+                id="currentMedication"
+                rows="6"
+              ></textarea>
+            </div>
+            <!-- habits section   -->
+            <p class="fs-3 fw-semibold">Healthy & Unhealthy Habits</p>
+            <hr />
+            <!-- exercise -->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">Exercise</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="never"
+                  id="never"
+                  name="exercise"
+                />
+                <label class="form-check-label" for="never"> Never </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="1-2days"
+                  id="1-2days"
+                  name="exercise"
+                />
+                <label class="form-check-label" for="1-2days"> 1-2 Days </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="3-4days"
+                  id="3-4days"
+                  name="exercise"
+                />
+
+                <label class="form-check-label" for="3-4days"> 3-4 days </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="5+days"
+                  id="5+days"
+                  name="exercise"
+                />
+                <label class="form-check-label" for="5+days"> 5+ Days </label>
+              </div>
+            </div>
+            <!-- diet -->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">Eating following a diet</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="I have a loose diet"
+                  id="looseDiet"
+                  name="diet"
+                />
+                <label class="form-check-label" for="looseDiet">
+                  I have a loose diet</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="I have a strict diet"
+                  id="strictDiet"
+                  name="diet"
+                />
+                <label class="form-check-label" for="strictDiet">
+                  I have a strict diet
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="I don't have a diet plan"
+                  id="noDiet"
+                  name="diet"
+                />
+                <label class="form-check-label" for="noDiet">
+                  I don't hava a diet plan
+                </label>
+              </div>
+            </div>
+            <!-- Alcohol Consumption -->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">Alcohol Consumption</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="I don't drink"
+                  id="noAlcohol"
+                  name="alcoholConsumption"
+                />
+                <label class="form-check-label" for="noAlcohol">
+                  I don't drink</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="1-2 glasses/day"
+                  id="1-2Glass"
+                  name="alcoholConsumption"
+                />
+                <label class="form-check-label" for="1-2Glass">
+                  1-2 glasses/day
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="3-4 glasses/day"
+                  id="3-4Glass"
+                  name="alcoholConsumption"
+                />
+                <label class="form-check-label" for="3-4Glass">
+                  3-4 glasses/day
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="5+ glasses/day"
+                  id="5+Glass"
+                  name="alcoholConsumption"
+                />
+                <label class="form-check-label" for="5+Glass">
+                  5+ glasses/day
+                </label>
+              </div>
+            </div>
+            <!-- caffeine Consumption -->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">Caffeine Consumption</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="I don't use caffeine"
+                  id="noCaffeine"
+                  name="caffeineConsumption"
+                />
+                <label class="form-check-label" for="noCaffeine">
+                  I don't use caffeine</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="1-2 cups/day"
+                  id="1-2Cups"
+                  name="caffeineConsumption"
+                />
+                <label class="form-check-label" for="1-2Cups">
+                  1-2 cups/day
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="3-4 cups/day"
+                  id="3-4Cups"
+                  name="caffeineConsumption"
+                />
+                <label class="form-check-label" for="3-4Cups">
+                  3-4 cups/day
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="5+ cups/day"
+                  id="5+Cups"
+                  name="caffeineConsumption"
+                />
+                <label class="form-check-label" for="5+Cups">
+                  5+ cups/day
+                </label>
+              </div>
+            </div>
+            <!-- smoke-->
+            <div class="mb-5">
+              <p class="fs-6 fw-semibold">Do you smoke?</p>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="No"
+                  id="noSmoking"
+                  name="smoking"
+                />
+                <label class="form-check-label" for="noSmoking"> No</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="0-1 pack/day"
+                  id="0-1Pack"
+                  name="smoking"
+                />
+                <label class="form-check-label" for="0-1Pack">
+                  0-1 pack/day
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="1-2 pack/day"
+                  id="1-2Pack"
+                  name="smoking"
+                />
+                <label class="form-check-label" for="1-2Pack">
+                  1-2 packs/day
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="2+ packs/day"
+                  id="2+Pack"
+                  name="smoking"
+                />
+                <label class="form-check-label" for="2+Pack">
+                  2+ packs/day
+                </label>
+              </div>
+            </div>
+
+            <!-- other comment textarea-->
+            <div>
+              <label class="form-label fw-semibold" for="otherComment"
+                >Include other comments regarding your Medical History
+              </label>
+              <textarea
+                class="form-control"
+                name="otherComment"
+                id="otherComment"
+                rows="6"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- form submit -->
+          <div class="px-5 py-4 border-top">
+            <input
+              class="btn btn-success px-5 py-2"
+              type="submit"
+              value="Submit"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- jquery cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- jquery validate cdn -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+      integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- bootstrap cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

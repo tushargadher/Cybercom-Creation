@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Reservation Form</title>
+    <meta name="viewpoint" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="" id="registrationForm">
+        <table>
+          <caption>
+            Flight Reservation Form
+          </caption>
+          <tr>
+            <td><label for="txtFirstName">Firstname:</label></td>
+            <td>
+              <input type="text" name="txtFirstName" id="txtFirstName" />
+              <span class="error" id="firstNameError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="txtMiddleName">Middlename:</label></td>
+            <td>
+              <input type="text" name="txtMiddleName" id="txtMiddleName" />
+              <span class="error" id="middleNameError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="txtLastName">Lastname:</label></td>
+            <td>
+              <input type="text" name="txtLastName" id="txtLastName" />
+              <span class="error" id="lastNameError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email</label></td>
+            <td>
+              <input type="email" name="email" id="email" />
+              <span class="error" id="emailError"></span>
+              <span id="emailMsg"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="date">DOB</label></td>
+            <td>
+              <input type="date" name="birthDate" id="birthDate" />
+              <span class="error" id="dobError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="gender">Choose Gender</label></td>
+            <td>
+              <table>
+                <tr>
+                  <td>
+                    <input type="radio" name="gender" id="male" value="Male" />
+                    <label for="male">Male</label>
+                  </td>
+                  <td>
+                    <input
+                      type="radio"
+                      name="gender"
+                      id="female"
+                      value="Female"
+                    />
+                    <label for="female">Female</label>
+                  </td>
+                </tr>
+              </table>
+              <span class="error" id="genderError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="Phone">Phone:</label></td>
+            <td>
+              <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" />
+              <span class="error" id="phoneError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="address">Address:</label></td>
+            <td>
+              <textarea
+                name="address"
+                id="address"
+                cols="30"
+                rows="5"
+              ></textarea>
+              <span class="error" id="addressError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="journeyDate">Journey Date</label></td>
+            <td>
+              <input type="date" name="journeyDate" id="journeyDate" />
+              <span class="error" id="journeyDateError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="JourneyFrom">Journey From :</label></td>
+            <td>
+              <input type="text" name="JourneyFrom" id="JourneyFrom" />
+              <span class="error" id="JourneyFromError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="JourneyTo">Journey To :</label></td>
+            <td>
+              <input type="text" name="JourneyTo" id="JourneyTo" />
+              <span class="error" id="JourneyToError"></span>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="departureTime">Departure Time :</label></td>
+            <td>
+              <input type="time" name="departureTime" id="departureTime" />
+              <span class="error" id="departureTimeError"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <input
+                type="submit"
+                name="submitButton"
+                id="submitButton"
+                value="Book"
+              />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <!-- jquery cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- jquery validate plugin -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"
+      integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
