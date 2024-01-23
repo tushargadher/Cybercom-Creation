@@ -399,6 +399,12 @@
     crossorigin="anonymous"
   ></script>
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.querySelector(".preloader").style.display = "none";
+      }, 2000);
+    });
+
     function handleSubmit(e) {
       e.preventDefault();
       alert("Thank You! Your Message Is Send.");
