@@ -1,59 +1,16 @@
-// $(document).ready(function () {
-//   $("#form").validate({
-//     rules: {
-//       gender: "required",
-//       txtFirstName: "required",
-//       txtLastName: "required",
-//       month: "required",
-//       day: "required",
-//       year: "required",
-//       patientHeight: "required",
-//       patientWeight: "required",
-//       patientEmail: {
-//         required: true,
-//         email: true,
-//       },
-//       visitReason: "required",
-//     },
-//     messages: {
-//       gender: "Please Select Gender",
-//       txtFirstName: "Please enter first Name",
-//       txtLastName: "Please enter last name",
-//       month: "Please enter month",
-//       day: "Please enter day",
-//       year: "Please enter year",
-//       patientHeight: "Please enter height",
-//       patientWeight: "Please enter weight",
-//       patientEmail: {
-//         required: "Please enter email",
-//         patientEmail:
-//           "Your email address must be in the format of name@domain.com",
-//       },
-//       visitReason: "This field is required.",
-//     },
-//     submitHandler: function (form) {
-//       // do other things for a valid form
-//       form.submit();
-//     },
-//   });
-// });
-
 $(document).ready(function () {
   $("#form").submit(function (e) {
     e.preventDefault();
     console.log("submit");
     if (validateForm()) {
       alert("your details has been added successfully");
-      $("#registrationForm")[0].reset();
+      $("#form")[0].reset();
+    } else {
+      alert("Please Enter Data into Feild");
     }
   });
   $("#patientEmail").keyup(function () {
-    if (validateEmail()) {
-      $("#patientEmail").css("border", "2px solid green");
-      // $("#emailMsg").html("Vaild");
-    } else {
-      $("#patientEmail").css("border", "2px solid red");
-    }
+    validateEmail();
   });
 });
 function validateForm() {
@@ -68,56 +25,86 @@ function validateForm() {
   let patientEmail = $("#patientEmail").val();
   let visitReason = $("#visitReason").val();
 
-  if (gender == null) {
-    $("#gender_error").html(`Please Select Gender`);
+  if (!gender) {
+    setInvalidInput($("#gender"), $("#gender_error"), "Please Select Gender");
     return false;
   }
-  if (txtFirstName == "") {
-    $("#firstname_error").html(`Please Enter Firstname`);
+  if (!txtFirstName) {
+    setInvalidInput(
+      $("#txtFirstName"),
+      $("#firstname_error"),
+      "Please Enter Firstname"
+    );
     return false;
   }
-  if (txtLastName == "") {
-    $("#lastname_error").html(`Please Enter Lastname`);
+  if (!txtLastName) {
+    setInvalidInput(
+      $("#txtLastName"),
+      $("#lastname_error"),
+      "Please Enter Lastname"
+    );
     return false;
   }
-  if (month == "") {
-    $("#month_error").html(`Please Enter Month`);
+  if (!month) {
+    setInvalidInput($("#month"), $("#month_error"), "Please Enter Month");
     return false;
   }
-  if (day == "") {
-    $("#day_error").html(`Please Enter Day`);
+  if (!day) {
+    setInvalidInput($("#day"), $("#day_error"), "Please Enter Day");
     return false;
   }
-  if (year == "") {
-    $("#year_error").html(`Please Enter Year`);
+  if (!year) {
+    setInvalidInput($("#year"), $("#year_error"), "Please Enter Year");
     return false;
   }
-  if (patientHeight == "") {
-    $("#patientHeight_error").html(`Please Enter Height`);
+  if (patientHeight <= 0) {
+    setInvalidInput(
+      $("#patientHeight"),
+      $("#patientHeight_error"),
+      "Please Enter valid Height"
+    );
     return false;
   }
-  if (patientWeight == "") {
-    $("#patientWeight_error").html(`Please Enter Weight`);
+  if (patientHeight <= 0) {
+    setInvalidInput(
+      $("#patientWeight"),
+      $("#patientWeight_error"),
+      "Please Enter valid Weight"
+    );
     return false;
   }
-  if (patientEmail == "") {
-    $("#patientEmail_error").html(`Please Enter Email`);
+  if (!patientEmail) {
+    setInvalidInput(
+      $("#patientEmail"),
+      $("#patientEmail_error"),
+      "Please Enter Email"
+    );
     return false;
   }
-  if (visitReason == "") {
-    $("#visitReason_error").html(`Please Enter Visit Reason`);
+  if (!visitReason) {
+    setInvalidInput(
+      $("#visitReason"),
+      $("#visitReason_error"),
+      "Please Enter Visit Reason"
+    );
     return false;
   }
-
   return true;
 }
 function validateEmail() {
   let email = $("#patientEmail").val();
   let regularExpression = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
   // let regularExpression = [a-zA-Z0-9_\-\.]+@[a-z]+[\.][a-z]{2,3};
+
   if (regularExpression.test(email)) {
-    return true;
+    $("#patientEmail").css("border", "2px solid green");
+    $("#patientEmail_error").html("Vaild").css("color", "green");
   } else {
-    return false;
+    $("#patientEmail").css("border", "2px solid red");
+    $("#patientEmail_error").html("Not Vaild").css("color", "red");
   }
+}
+function setInvalidInput(element, errorElement, errorMessage) {
+  element.css("border", "2px solid red");
+  errorElement.html(errorMessage).css("color", "red");
 }
