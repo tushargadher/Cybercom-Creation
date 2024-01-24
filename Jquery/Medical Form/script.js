@@ -65,7 +65,7 @@ function validateForm() {
     );
     return false;
   }
-  if (patientHeight <= 0) {
+  if (patientWeight <= 0) {
     setInvalidInput(
       $("#patientWeight"),
       $("#patientWeight_error"),
