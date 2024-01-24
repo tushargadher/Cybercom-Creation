@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Image on User Interaction</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      img {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_04_thum-1.jpg"
+        alt="img"
+        id="firstImg"
+      />
+      <img
+        src="https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_04_thum-1.jpg"
+        alt="img"
+        id="secondImg"
+      />
+      <img
+        src="https://fujifilm-x.com/wp-content/uploads/2021/01/gfx100s_sample_04_thum-1.jpg"
+        alt="img"
+        id="thirdImg"
+      />
+    </div>
+    <script>
+      let firstImg = document.getElementById("firstImg");
+      let secondImg = document.getElementById("secondImg");
+      let thirdImg = document.getElementById("thirdImg");
+      firstImg.addEventListener("click", function () {
+        firstImg.src =
+          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg";
+      });
+      secondImg.addEventListener("mouseover", function () {
+        secondImg.src =
+          "https://imgk.timesnownews.com/story/Ram_Mandir.jpeg?tr=w-1200,h-900";
+      });
+
+      thirdImg.addEventListener("dblclick",function(){
+        thirdImg.src = "https://wallpapers.com/images/featured/new-york-city-5oaa14h4mw6w3o71.jpg"
+      })
+    </script>
+  </body>
+</html>

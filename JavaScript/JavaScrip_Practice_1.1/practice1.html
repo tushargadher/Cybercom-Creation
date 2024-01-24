@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Paragraph Using Js</title>
+  </head>
+  <body>
+    <p id="p">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus dolore
+      repudiandae, nihil soluta rem, provident illo praesentium ut vel
+      blanditiis aliquid expedita nesciunt accusantium excepturi nulla labore
+      nam nemo laboriosam!
+    </p>
+    <button id="button">Change Paragraph</button>
+  </body>
+  <script>
+    const button = document.getElementById("button");
+    const p = document.getElementById("p");
+    button.addEventListener("click", function () {
+      p.innerHTML = "Wow !! You just changed the paragraph using javascript";
+    });
+  </script>
+</html>

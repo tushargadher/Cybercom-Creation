@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js Practice 3</title>
+    <style>
+      .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+      }
+      p {
+        width: 40%;
+        border: 1px solid black;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="Paragraph">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+        officia. Tenetur nostrum debitis beatae! Accusantium natus ratione, quas
+        molestias optio nemo animi magnam mollitia, modi officia nesciunt qui
+        voluptates magni.
+      </p>
+      <p class="Paragraph">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
+        consequatur animi repellendus vel consequuntur recusandae maiores maxime
+        soluta ipsam architecto tempora a sequi quia, placeat distinctio ducimus
+        itaque ex neque!
+      </p>
+      <p class="Paragraph">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cum
+        veritatis magni eveniet tempore, quo id impedit minus, modi possimus
+        consectetur voluptates, neque ratione. Voluptates similique molestiae
+        corporis explicabo exercitationem.
+      </p>
+      <div>
+        <button class="button">Change First Paragraph</button>
+        <button class="button">Change Second Paragraph</button>
+        <button class="button">Change Third Paragraph</button>
+      </div>
+    </div>
+    <script>
+      let Paragraphs = document.querySelectorAll(".Paragraph");
+      let Buttons = document.querySelectorAll(".button");
+      for (let i = 0; i < Buttons.length; i++) {
+        Buttons[i].addEventListener("click", function () {
+          Paragraphs[i].innerHTML =
+            "Waw !! You just Change the Content of Paragragh Using JavaScript It is so amazing";
+        });
+      }
+    </script>
+  </body>
+</html>

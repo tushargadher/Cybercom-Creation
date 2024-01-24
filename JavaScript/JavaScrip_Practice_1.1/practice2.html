@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List Using Javascript</title>
+    <style>
+      div {
+        display: flex;
+        justify-content: space-between;
+        width: 15vw;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Your Task List</h1>
+    <input type="text" placeholder="Enter New Task" id="inputTask" />
+    <button id="addButton">ADD TASK</button>
+    <ul id="list-items"></ul>
+  </body>
+  <script>
+    let addButton = document.getElementById("addButton");
+    let inputTask = document.getElementById("inputTask");
+    let listItem = document.getElementById("list-items");
+    addButton.addEventListener("click", addtoList);
+
+    function addtoList() {
+      let newTask = inputTask.value;
+
+      if (newTask.length) {
+        let div = document.createElement("div");
+        listItem.appendChild(div);
+        //creating li element dynamically
+        let li = document.createElement("li");
+        let liText = document.createTextNode(newTask);
+        li.appendChild(liText);
+        div.appendChild(li);
+
+        //creating remove button
+        let removeButton = document.createElement("button");
+        removeButton.textContent = "Delete";
+        div.appendChild(removeButton);
+        removeButton.onclick = function () {
+          div.removeChild(li);
+          div.removeChild(removeButton);
+        };
+        newTask = "";
+      } else {
+        alert("Please Enter Task !!");
+      }
+    }
+  </script>
+</html>
