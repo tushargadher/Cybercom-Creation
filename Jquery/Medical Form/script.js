@@ -1,19 +1,40 @@
 $(document).ready(function () {
   $("#form").submit(function (e) {
     e.preventDefault();
-    console.log("submit");
     if (validateForm()) {
+      alert(`Missing Vaule in ${validateForm()} fields.`);
+    } else {
       alert("your details has been added successfully");
       $("#form")[0].reset();
-    } else {
-      alert("Please Enter Data into Feild");
+      location.reload(true);
     }
   });
   $("#patientEmail").keyup(function () {
     validateEmail();
   });
+  $("#txtFirstName").keyup(function () {
+    let txtFirstName = $("#txtFirstName").val();
+    if (validateStringInput(txtFirstName)) {
+      $("#txtFirstName").css("border", "2px solid green");
+      $("#firstname_error").html(" Valid ").css("color", "green");
+    } else {
+      $("#txtFirstName").css("border", "2px solid red");
+      $("#firstname_error").html("Not valid").css("color", "red");
+    }
+  });
+  $("#txtLastName").keyup(function () {
+    let txtLastName = $("#txtLastName").val();
+    if (validateStringInput(txtLastName)) {
+      $("#txtLastName").css("border", "2px solid green");
+      $("#lastname_error").html("Valid").css("color", "green");
+    } else {
+      $("#txtLastName").css("border", "2px solid red");
+      $("#lastname_error").html("Not valid").css("color", "red");
+    }
+  });
 });
 function validateForm() {
+  let error = 0;
   let gender = $("#gender").val();
   let txtFirstName = $("#txtFirstName").val();
   let txtLastName = $("#txtLastName").val();
@@ -27,7 +48,7 @@ function validateForm() {
 
   if (!gender) {
     setInvalidInput($("#gender"), $("#gender_error"), "Please Select Gender");
-    return false;
+    error++;
   }
   if (!txtFirstName) {
     setInvalidInput(
@@ -35,7 +56,7 @@ function validateForm() {
       $("#firstname_error"),
       "Please Enter Firstname"
     );
-    return false;
+    error++;
   }
   if (!txtLastName) {
     setInvalidInput(
@@ -43,19 +64,19 @@ function validateForm() {
       $("#lastname_error"),
       "Please Enter Lastname"
     );
-    return false;
+    error++;
   }
   if (!month) {
     setInvalidInput($("#month"), $("#month_error"), "Please Enter Month");
-    return false;
+    error++;
   }
   if (!day) {
     setInvalidInput($("#day"), $("#day_error"), "Please Enter Day");
-    return false;
+    error++;
   }
   if (!year) {
     setInvalidInput($("#year"), $("#year_error"), "Please Enter Year");
-    return false;
+    error++;
   }
   if (patientHeight <= 0) {
     setInvalidInput(
@@ -63,7 +84,7 @@ function validateForm() {
       $("#patientHeight_error"),
       "Please Enter valid Height"
     );
-    return false;
+    error++;
   }
   if (patientWeight <= 0) {
     setInvalidInput(
@@ -71,7 +92,7 @@ function validateForm() {
       $("#patientWeight_error"),
       "Please Enter valid Weight"
     );
-    return false;
+    error++;
   }
   if (!patientEmail) {
     setInvalidInput(
@@ -79,7 +100,7 @@ function validateForm() {
       $("#patientEmail_error"),
       "Please Enter Email"
     );
-    return false;
+    error++;
   }
   if (!visitReason) {
     setInvalidInput(
@@ -87,9 +108,9 @@ function validateForm() {
       $("#visitReason_error"),
       "Please Enter Visit Reason"
     );
-    return false;
+    error++;
   }
-  return true;
+  return error;
 }
 function validateEmail() {
   let email = $("#patientEmail").val();
@@ -98,13 +119,18 @@ function validateEmail() {
 
   if (regularExpression.test(email)) {
     $("#patientEmail").css("border", "2px solid green");
-    $("#patientEmail_error").html("Vaild").css("color", "green");
+    $("#patientEmail_error").html("valid").css("color", "green");
   } else {
     $("#patientEmail").css("border", "2px solid red");
-    $("#patientEmail_error").html("Not Vaild").css("color", "red");
+    $("#patientEmail_error").html("Not valid").css("color", "red");
   }
 }
 function setInvalidInput(element, errorElement, errorMessage) {
   element.css("border", "2px solid red");
   errorElement.html(errorMessage).css("color", "red");
+}
+
+function validateStringInput(value) {
+  let stringRegex = /^[a-zA-Z ]{2,30}$/;
+  return stringRegex.test(value);
 }
