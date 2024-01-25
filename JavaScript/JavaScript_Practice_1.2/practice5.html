@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combine Object</title>
+  </head>
+  <body></body>
+  <script>
+    function combineObjects(firstObject, secondObject) {
+      return { ...firstObject, ...secondObject };
+    }
+    let personObject = {
+      name: "Tushar",
+      age: 21,
+      gender: "Male",
+    };
+    let productObject = {
+      product_name: "T-shirt",
+      price: {
+        small_size: "500",
+        medium_size: "600",
+        large_size: "700",
+      },
+    };
+    console.log(combineObjects(personObject, productObject));
+
+    //if both object have same key then primary value of key is overwritten by new value
+  </script>
+</html>

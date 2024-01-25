@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array of Object</title>
+  </head>
+  <body>
+    <script>
+      // Array of people
+      let peopleArray = [
+        { name: "John", age: 25, address: "USA" },
+        { name: "Smith", age: 30, address: "England" },
+        { name: "Johnson", age: 22, address: "Canada" },
+      ];
+
+      // Array of products
+      let productsArray = [
+        { name: "Laptop", price: 50000, brand: "HP" },
+        { name: "Smartphone", price: 12000, brand: "RealMe" },
+        {
+          name: "Headphones",
+          price: { wireless: "1400", wired: "400" },
+          brand: "Boat",
+        },
+      ];
+
+      document.write("People Datails : <br><br>");
+      peopleArray.map((person) => {
+        if (person.name) document.write(`Name :${person.name} <br>`);
+        if (person.age) document.write(`Age :${person.age} <br>`);
+        if (person.address) document.write(`Address:${person.address} <br>`);
+        document.write("----------------<br><br>");
+      });
+      document.write("Product Datails : <br><br>");
+      productsArray.map((product) => {
+
+        if (product.name) document.write(`Name :${product.name} <br>`);
+
+        if (product.price.wireless || product.price.wired) {
+          if (product.price.wireless)
+            document.write(`Price: Wireless${product.price.wireless} <br>`);
+          if (product.price.wired)
+            document.write(`Price: Wired${product.price.wired} <br>`);
+        } else {
+          if (product.price) document.write(`Price:${product.price} <br>`);
+        }
+        
+        if (product.brand) document.write(`Brand:${product.brand} <br>`);
+        document.write("----------------<br><br>");
+      });
+    </script>
+  </body>
+</html>

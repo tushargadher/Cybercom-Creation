@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js Object</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(name, age, address) {
+          this.name = name;
+          this.age = age;
+          this.address = address;
+        }
+
+        displayObject() {
+          if (this.name) document.write(`Name: ${this.name} <br>`);
+          if (this.age) document.write(`Age: ${this.age} <br>`);
+          if (this.address) document.write(`Address: ${this.address} <br>`);
+          document.write("<br>");
+        }
+      }
+
+      let person1 = new Person("Tushar", 21, "surat");
+      person1.displayObject();
+
+      //modify object properties
+      person1.name = "Tushar Gadher";
+      person1["age"] = 22;
+      person1.address = "Ahemdabad";
+
+      person1.displayObject();
+    </script>
+  </body>
+</html>

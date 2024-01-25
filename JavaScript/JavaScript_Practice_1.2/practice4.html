@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Property</title>
+  </head>
+  <body>
+    <script>
+      // we can delete Object property using two way delele method and spread object
+
+      function filterObject(object) {
+        if (object.hasOwnProperty("name")) {
+          const { name, ...restProperty } = object;
+          return restProperty;
+        } else {
+          console.log("Property not found");
+        }
+      }
+      const personObject = {
+        name: "Tushar",
+        age: 22,
+        address: "Surat",
+        gender: "Male",
+      };
+      console.log(filterObject(personObject));
+    </script>
+  </body>
+</html>

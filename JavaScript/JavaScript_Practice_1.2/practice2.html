@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js Object</title>
+  </head>
+  <body>
+    <script>
+      let product = {
+        name: "Laptop",
+        price: 50000,
+        quantity: 15,
+        battery: {
+          capacity: "5000mAh",
+          charging: {
+            wired: "Up to 15W",
+          },
+        },
+      };
+
+      if (product.name) document.write(`Name: ${product.name} <br>`);
+      if (product.price) document.write(`Price: ${product.price} <br>`);
+      if (product.quantity)
+        document.write(`Quantity: ${product.quantity} <br>`);
+      if (product.battery.capacity)
+        document.write(`Battery: ${product.battery.capacity} <br>`);
+      if (product.battery.charging.wired)
+        document.write(`Charging: ${product.battery.charging.wired} <br>`);
+      document.write("<br>");
+
+      document.write("<br>");
+
+      if (product.price && product.quantity) {
+        document.write(`Total Cost : ${product.price * product.quantity}`);
+      } else {
+        document.write("Something is missing");
+      }
+    </script>
+  </body>
+</html>
