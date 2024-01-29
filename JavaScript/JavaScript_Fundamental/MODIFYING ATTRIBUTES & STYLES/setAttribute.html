@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setAttribute</title>
+  </head>
+  <style>
+    .contentBox {
+      border: 1px solid black;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgb(127, 127, 209);
+      color: white;
+    }
+  </style>
+  <body>
+    <p id="paragraph">
+      The setAttribute() method sets a new value to an attribute. If the
+      attribute does not exist, it is created first.
+    </p>
+
+    <button id="button">SET Attribute</button>
+
+    <!-- javascript -->
+    <script>
+      let button = document.getElementById("button");
+      let paragraph = document.getElementById("paragraph");
+      button.addEventListener("click", function () {
+        paragraph.setAttribute("class", "contentBox");
+
+        //use can also apply style using it,but it overwrite the existing value so it not good pratice
+        // paragraph.setAttribute("style", "background-color:red;");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClassList</title>
+    <style>
+      .bold {
+        font-weight: bold;
+      }
+      .customStyle {
+        border: 1px solid blue;
+        padding: 12px;
+        width: 30vw;
+        background-color: gray;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="info">
+      The classList property in JavaScript provides an interface to interact
+      with the classes of an HTML element.
+    </p>
+    <button id="styleButton">Apply Style</button>
+
+    <button id="removeStyle">Remove Style</button>
+    <button id="toggleBold">ToggleBold</button>
+    <!-- javascript -->
+    <script>
+      let toggleButton = document.getElementById("toggleBold");
+      let styleButton = document.getElementById("styleButton");
+      let removeStyle = document.getElementById("removeStyle");
+      let paragraph = document.getElementById("info");
+
+      toggleButton.addEventListener("click", function () {
+        paragraph.classList.toggle("bold");
+      });
+
+      styleButton.addEventListener("click", function () {
+        paragraph.classList.add("customStyle");
+      });
+      removeStyle.addEventListener("click", function () {
+        paragraph.classList.remove("customStyle");
+      });
+    </script>
+  </body>
+</html>

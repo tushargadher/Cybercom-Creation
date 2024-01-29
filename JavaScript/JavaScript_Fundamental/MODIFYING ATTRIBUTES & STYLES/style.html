@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Style Using JavaScript</title>
+  </head>
+  <body>
+    <p id="infoParagraph">
+      Using JavaScript We can apply style to any html element dynamically. too
+      see the example click on below button
+    </p>
+    <button id="button">Apply Style</button>
+  </body>
+  <!-- javascript -->
+  <script>
+    let button = document.getElementById("button");
+    let paragraph = document.getElementById("infoParagraph");
+    button.addEventListener("click", function () {
+      paragraph.style.border = "2px solid black";
+      paragraph.style.color = "white";
+      paragraph.style.backgroundColor = "brown";
+      paragraph.style.borderRadius = "10px";
+      paragraph.style.padding = "20px";
+
+      button.style.padding = "10px";
+      button.style.backgroundColor = "lightblue";
+    });
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>textContent</title>
+  </head>
+  <body>
+    <p id="paragraph">
+      The textContent property sets or returns the text content of the specified
+      node, brand all its descendants with spacing and CSS hidden text, but
+      without tags.
+    </p>
+    <button id="button">Click</button>
+    <p id="showContext"></p>
+    <!-- javascript -->
+    <script>
+      let paragraph = document.getElementById("paragraph");
+      let button = document.getElementById("button");
+      let showContext = document.getElementById("showContext");
+      button.addEventListener("click", function () {
+        let paragraphContent = paragraph.textContent;
+
+        showContext.innerHTML = paragraphContent;
+      });
+    </script>
+  </body>
+</html>
+<body>
+  <p>
+    The getAttribute() method returns the value of an element's attribute.
+  </p>
+
+  <button id="button" onclick="myfunction()"></button>
+
+  <p id="result"></p>
+  <!-- javascript -->
+  <script>
+    let button = document.getElementById("button");
+
+    button.addEventListener("click", function () {
+      let attributeValue = button.getAttribute("id");
+      document.getElementById("result").innerText = attributeValue;
+    });
+  </script>
+</body>

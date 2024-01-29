@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Child</title>
+  </head>
+  <body>
+    <p>The removeChild() method removes an element's child.</p>
+    <ul id="list">
+      <li>Android Studio</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React Js</li>
+    </ul>
+    <button onclick="removeChilds()">Remove Child</button>
+    <!-- JavaScript -->
+    <script>
+      function removeChilds() {
+        let list = document.getElementById("list");
+        let itemToRemove = document.querySelector("#list>li");
+        list.removeChild(itemToRemove);
+      }
+    </script>
+  </body>
+</html>

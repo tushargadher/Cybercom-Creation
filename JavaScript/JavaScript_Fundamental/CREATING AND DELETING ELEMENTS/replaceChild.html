@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>replaceChild</title>
+  </head>
+  <body>
+    <p>The replaceChild() method replaces a child node with a new node.</p>
+    <ul id="list">
+      <li id="replace_item">Android Studio</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React Js</li>
+    </ul>
+    <button onclick="replaceElement()">Replace Child</button>
+    <!-- JavaScript -->
+    <script>
+      function replaceElement() {
+        let list = document.getElementById("list");
+        let itemToReplace = document.getElementById("replace_item");
+        let newNode = document.createTextNode("MySQL");
+        list.replaceChild(newNode, itemToReplace);
+        // replaceChild(newNode,oldNode)
+      }
+    </script>
+  </body>
+</html>

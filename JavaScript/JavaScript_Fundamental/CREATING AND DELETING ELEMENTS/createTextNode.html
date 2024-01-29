@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createTextNode</title>
+  </head>
+  <body>
+    <p>
+      The document.createTextNode() method in JavaScript is used to create a new
+      text node
+    </p>
+    <button onclick="createNewTextNode()">Show Message</button>
+    <!-- JavaScript -->
+    <script>
+      function createNewTextNode() {
+        let newTextNode = document.createTextNode(
+          "Here it is,new text node created dynamically"
+        );
+        document.body.appendChild(newTextNode);
+      }
+    </script>
+  </body>
+</html>

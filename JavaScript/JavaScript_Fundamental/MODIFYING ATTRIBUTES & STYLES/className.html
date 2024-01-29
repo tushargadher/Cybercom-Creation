@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClassName</title>
+    <style>
+      .customStyle {
+        border: 1px solid blue;
+        font-size: 20px;
+        padding: 20px;
+        width: 30vw;
+        background-color: rgb(157, 157, 157);
+        color: white;
+      }
+      .newStyle {
+        background-color: lightblue;
+        font-size: 25px;
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="customStyle" id="info">
+      The className property sets or returns an element's class attribute.
+    </p>
+    <button id="toggleStyleButton">Toggle Style</button>
+    <!-- javascript -->
+    <script>
+      let toggleStyleButton = document.getElementById("toggleStyleButton");
+      let paragraph = document.getElementById("info");
+
+      toggleStyleButton.addEventListener("click", function () {
+        if (paragraph.className == "customStyle") {
+          paragraph.className = "newStyle";
+        } else {
+          paragraph.className = "customStyle";
+        }
+      });
+    </script>
+  </body>
+</html>

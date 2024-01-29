@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>insertAdjacentHTML</title>
+  </head>
+  <body>
+    <h2>insertAdjacentHTML</h2>
+    <p id="paragraph" style="border: 1px solid black">
+      The insertAdjacentHTML() method inserts HTML code into a specified
+      position like afterbegin, afterend, beforebegin and beforeend
+    </p>
+    <button id="afterbegin">Afterbegin</button>
+    <button id="afterend">Afterend</button>
+    <button id="beforebegin">Beforebegin</button>
+    <button id="beforeend">Beforeend</button>
+    <!-- javascript -->
+    <script>
+      let paragraph = document.getElementById("paragraph");
+      // aftrbegin
+      document
+        .getElementById("afterbegin")
+        .addEventListener("click", function () {
+          let html =
+            "<span style='color:red'>	After the beginning of the element (first child)</span>";
+          paragraph.insertAdjacentHTML("afterbegin", html);
+        });
+
+      // aftrend
+      document.getElementById("afterend").addEventListener("click", function () {
+        let html = "<span style='color:red'>After the element</span>";
+        paragraph.insertAdjacentHTML("afterend", html);
+      });
+
+      // beforebegin
+      document
+        .getElementById("beforebegin")
+        .addEventListener("click", function () {
+          let html = "<span style='color:red'>		Before the element</span>";
+          paragraph.insertAdjacentHTML("beforebegin", html);
+        });
+      // beforeend
+      document
+        .getElementById("beforeend")
+        .addEventListener("click", function () {
+          let html =
+            "<span style='color:red'>		Before the end of the element (last child)</span>";
+          paragraph.insertAdjacentHTML("beforeend", html);
+        });
+    </script>
+  </body>
+</html>

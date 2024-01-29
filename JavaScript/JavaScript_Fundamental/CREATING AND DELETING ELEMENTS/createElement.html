@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createElement</title>
+  </head>
+  <body>
+    <p>
+      The document.createElement() method in JavaScript is used to dynamically
+      create a new HTML element.
+    </p>
+    <button onclick="createNewElement()">Create Element</button>
+    <!-- JavaScript -->
+    <script>
+      function createNewElement() {
+        let newParagraph = document.createElement("p");
+        newParagraph.textContent = "This is Dynamically Created Paragraph";
+        document.body.appendChild(newParagraph);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerHTML</title>
+  </head>
+  <body>
+    <p>
+      <b
+        >The innerHTML property sets or returns the HTML content (inner HTML) of
+        an element.</b
+      >
+    </p>
+    <button id="button">Click Here to change content</button>
+    <p id="showContext"></p>
+    <!-- javascript -->
+    <script>
+      let button = document.getElementById("button");
+      let showContext = document.getElementById("showContext");
+      button.addEventListener("click", function () {
+        let newContent = prompt("Enter You Want to OverWrite");
+        document.getElementsByTagName("p")[0].innerHTML = newContent;
+
+        //get the content of html element using innnerhtml
+        let buttonContent = button.innerHTML;
+
+        showContext.innerHTML = buttonContent;
+      });
+    </script>
+  </body>
+</html>

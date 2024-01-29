@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuerySelector</title>
+  </head>
+  <body>
+    <p>
+      The querySelector() method returns the first element that matches a CSS
+      selector.To return all matches (not only the first), use the
+      querySelectorAll() instead.
+    </p>
+
+    <div id="specialDiv">
+      <p>
+        This is a special div with a yellow background.
+        The querySelector()method returns the first element that matches a CSS selector.To return
+        all matches (not only the first), use the querySelectorAll() instead.
+      </p>
+    </div>
+    <button>Click</button>
+    <!-- JavaScript -->
+    <script>
+      let button = document.querySelector("button");
+      let firstParagraph = document.querySelector("p");
+      button.addEventListener("click", function () {
+        firstParagraph.style.fontSize = "30px";
+        document.querySelector("#specialDiv").style.backgroundColor = "yellow";
+      });
+    </script>
+  </body>
+</html>

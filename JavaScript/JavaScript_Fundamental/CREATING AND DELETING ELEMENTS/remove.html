@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Method</title>
+  </head>
+  <body>
+    <p id="info">
+      The remove() method removes an element (or node) from the document.
+    </p>
+    <p>
+      Click On Below Remove Button ,the above paragraph will be removed from DOM
+    </p>
+    <button onclick="removeElement()">Remove</button>
+    <!-- JavaScript -->
+    <script>
+      function removeElement() {
+        document.getElementById("info").remove();
+      }
+    </script>
+  </body>
+</html>

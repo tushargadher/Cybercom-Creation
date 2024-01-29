@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementBysClassName</title>
+  </head>
+  <body>
+    <p class="highlighted">
+      The getElementsByClassName() method returns a collection of elements with
+      a specified class name(s). The getElementsByClassName() method returns an
+      HTMLCollection.
+    </p>
+    <p>This is Normal Text</p>
+    <p class="highlighted">
+      The getElementsByClassName() method returns a collection of elements with
+      a specified class name(s). The getElementsByClassName() method returns an
+      HTMLCollection.
+    </p>
+    <button class="button">Click</button>
+  </body>
+  <!-- JavaScript -->
+  <script>
+    let button = document.getElementsByClassName("button");
+    let highlighted = document.getElementsByClassName("highlighted");
+    button[0].addEventListener("click", function () {
+      console.log(document.getElementsByClassName("highlighted"));
+      for (let i = 0; i < highlighted.length; i++) {
+        highlighted[i].style.fontWeight = "bold";
+        highlighted[i].style.color = "green";
+      }
+    });
+  </script>
+</html>

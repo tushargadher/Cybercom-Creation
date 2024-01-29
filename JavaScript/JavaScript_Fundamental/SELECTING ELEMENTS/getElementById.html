@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementByID</title>
+  </head>
+  <body>
+    <p id="paragraph">
+      Hello This is JavaScript and Now I will change the color of text using
+      JavaScript
+    </p>
+    <button type="button" id="button">Click Me</button>
+
+    <!-- JavaScript  -->
+    <script>
+      let paragraph = document.getElementById("paragraph");
+      let button = document.getElementById("button");
+
+      button.addEventListener("click", function () {
+        paragraph.style.color = "Blue";
+      });
+    </script>
+  </body>
+</html>

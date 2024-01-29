@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getAttribute</title>
+  </head>
+
+  <body>
+    <p>
+      The getAttribute() method returns the value of an element's attribute.
+    </p>
+    <a id="myLink" href="https://www.example.com" target="_blank"
+      >Visit Example.com</a
+    >
+
+    <button id="button" onclick="myfunction()">Get Attribute</button>
+
+    <p id="result"></p>
+    <p id="linkSrc"></p>
+    <!-- javascript -->
+    <script>
+      let button = document.getElementById("button");
+      let link = document.getElementById("myLink");
+      button.addEventListener("click", function () {
+        let attributeValue = button.getAttribute("onclick");
+        document.getElementById("result").innerText = attributeValue;
+        attributeValue = link.getAttribute("href");
+        document.getElementById("linkSrc").innerText = attributeValue;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getElementsByTagName</title>
+  </head>
+  <body>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>MySQL</li>
+    </ul>
+    <button>Click</button>
+    <!-- JavaScript -->
+    <script>
+      let button = document.getElementsByTagName("button");
+      let liCollecation = document.getElementsByTagName("li");
+      button[0].addEventListener("click", function () {
+        for (let i = 0; i < liCollecation.length; i++) {
+          liCollecation[i].style.fontWeight = "bold";
+          liCollecation[i].style.color = "green";
+          liCollecation[i].style.backgroundColor = "lightgreen";
+        }
+      });
+    </script>
+  </body>
+</html>
