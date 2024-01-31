@@ -17,12 +17,16 @@
       a specified class name(s). The getElementsByClassName() method returns an
       HTMLCollection.
     </p>
+    <p class="semi_highLighted highlighted">You can provide more then one classes also:</p>
     <button class="button">Click</button>
   </body>
   <!-- JavaScript -->
   <script>
     let button = document.getElementsByClassName("button");
     let highlighted = document.getElementsByClassName("highlighted");
+    console.log(
+      document.getElementsByClassName("highlighted semi_highLighted")
+    );
     button[0].addEventListener("click", function () {
       console.log(document.getElementsByClassName("highlighted"));
       for (let i = 0; i < highlighted.length; i++) {
