@@ -1,4 +1,5 @@
 let productForm = document.getElementById("productForm");
+// let showButton = document.getElementById("showProductButton");
 let inputTitle = document.getElementById("productTitle");
 let inputPrice = document.getElementById("productPrice");
 let inputDescription = document.getElementById("productDescription");
@@ -6,7 +7,9 @@ let selectCategory = document.getElementById("productCategory");
 
 let queryParams = new URLSearchParams(window.location.search);
 let editProduct_id = queryParams.get("productId");
-
+function redirectUser() {
+  window.location.href = "http://127.0.0.1:5500/showProduct.html";
+}
 if (editProduct_id) {
   document.getElementsByTagName("h1")[0].innerText = "Edit Product Form";
   document.title = "Edit Product Form";
@@ -50,7 +53,7 @@ productForm.addEventListener("submit", function (e) {
     const updatedProducts = [...filterProduct, product];
     localStorage.setItem("productData", JSON.stringify(updatedProducts));
     productForm.reset();
-    productForm.submit();
+    alert("Product Details Updated");
   } else if (formValid) {
     let product_id = Date.now();
     let product = {
@@ -63,7 +66,7 @@ productForm.addEventListener("submit", function (e) {
     productData.push(product);
     localStorage.setItem("productData", JSON.stringify(productData));
     productForm.reset();
-    productForm.submit();
+    alert("Product Added");
   }
 });
 

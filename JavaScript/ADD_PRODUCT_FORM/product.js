@@ -1,51 +1,47 @@
-const productData = JSON.parse(localStorage.getItem("productData"));
-let tbody = document.getElementsByTagName("tbody")[0];
+displayProducts();
+function displayProducts() {
+  let tbody = document.getElementsByTagName("tbody")[0];
+  tbody.innerHTML = "";
+  const productData = JSON.parse(localStorage.getItem("productData")) || [];
 
-productData.forEach((element) => {
-  let row = document.createElement("tr");
-  let tdTitle = document.createElement("td");
-  tdTitle.textContent = element.title;
-  row.appendChild(tdTitle);
+  if (!productData.length) {
+    alert("Product List is Emapty");
+    const row = document.createElement("tr");
+    const td = document.createElement("td");
+    td.colSpan = 4;
+    td.textContent = "No Product To display";
 
-  let tdCategory = document.createElement("td");
-  tdCategory.textContent = element.category;
-  row.appendChild(tdCategory);
-
-  let tdPrice = document.createElement("td");
-  tdPrice.textContent = element.price;
-  row.appendChild(tdPrice);
-
-  let tdAction = document.createElement("td");
-  //creating edit button
-  let editButton = document.createElement("Button");
-  editButton.textContent = "Edit";
-  tdAction.appendChild(editButton);
-  editButton.addEventListener("click", () => {
-    editProduct(element);
+    row.appendChild(td);
+    tbody.appendChild(row);
+    return;
+  }
+  productData.forEach((product) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${product.title}</td>
+      <td>${product.category}</td>
+      <td>${product.price}</td>
+      <td>
+        <button onClick="editProduct(${product.id});">Edit</button>
+        <button onClick="deleteProduct(${product.id});">Remove</button>
+      </td>
+    `;
+    tbody.appendChild(row);
   });
-
-  //create delete button
-  let deleteButton = document.createElement("Button");
-  deleteButton.textContent = "Remove";
-  deleteButton.addEventListener("click", () => {
-    deleteProduct(element);
-  });
-  tdAction.appendChild(deleteButton);
-  row.appendChild(tdAction);
-  tbody.insertAdjacentElement("beforeend", row);
-});
-
-function editProduct(element) {
-  const url = `http://127.0.0.1:5500/addProduct.html?productId=${element.id}`;
-  console.log(url);
+}
+function editProduct(productID) {
+  const url = `http://127.0.0.1:5500/addProduct.html?productId=${productID}`;
   window.location.href = url;
 }
 
-function deleteProduct(element) {
-  const productData = JSON.parse(localStorage.getItem("productData")) || [];
-  const newProductList = productData.filter((product) => {
-    return element.id != product.id;
-  });
-  localStorage.setItem("productData", JSON.stringify(newProductList));
-  window.location.reload();
+function deleteProduct(productID) {
+  let conform = confirm("Delete Product?");
+  if (conform) {
+    const productData = JSON.parse(localStorage.getItem("productData")) || [];
+    const newProductList = productData.filter((product) => {
+      return productID != product.id;
+    });
+    localStorage.setItem("productData", JSON.stringify(newProductList));
+    displayProducts();
+  }
 }

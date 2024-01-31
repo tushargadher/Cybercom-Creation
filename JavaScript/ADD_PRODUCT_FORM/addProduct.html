@@ -44,22 +44,35 @@
           <span id="description_error" class="text-danger"></span>
         </div>
         <div class="row mb-3">
-          <div class="col">
-            <label for="productCategory" class="form-label">Category</label>
-            <select id="productCategory" name="productCategory">
-              <option value="" selected disabled>Chose</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Men's clothing">Men's clothing</option>
-              <option value="Women's clothing">Women's clothing</option>
-              <option value="Food">Food</option>
-              <option value="Gadget">Gadget</option>
-              <option value="Toy">Toy</option>
-            </select>
-            <span id="category_error" class="text-danger"></span>
-          </div>
-          <div class="col"></div>
+          <label for="productCategory" class="form-label">Category</label>
+          <select
+            id="productCategory"
+            name="productCategory"
+            class="form-select w-50"
+          >
+            <option value="" selected disabled>Chose</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Men's clothing">Men's clothing</option>
+            <option value="Women's clothing">Women's clothing</option>
+            <option value="Food">Food</option>
+            <option value="Gadget">Gadget</option>
+            <option value="Toy">Toy</option>
+          </select>
+          <span id="category_error" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row mb-3">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button
+              type="submit"
+              class="btn btn-success"
+              onclick="redirectUser()"
+            >
+              Show Product
+            </button>
+          </div>
+        </div>
       </form>
     </div>
 
