@@ -1,5 +1,5 @@
 
-# Cybercom Creation Intership
+# Cybercom Creation Internship
 
 The following table demonstrates the work I did during my internship.
 
