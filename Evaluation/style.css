@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.heading {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* login page style */
+#loginForm {
+  height: 50%;
+  width: 30%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(255, 220, 154);
+}
+#loginForm input {
+  width: 80%;
+  height: 10%;
+}
+.button {
+  background-color: orange;
+  color: white;
+  border: none;
+}
+/*registration page style*/
+#registrationForm {
+  height: 50%;
+  width: 30%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px 10px;
+  /* background-color: rgb(255, 220, 154); */
+}
+#registrationForm input {
+  width: 80%;
+  height: 10%;
+}
+#registrationForm select {
+  width: 80%;
+  height: 10%;
+}
+#registrationForm input[type="checkbox"] {
+  width: auto;
+  height: auto;
+}
+
+/* dashborad style */
+.dashContainer {
+  display: flex;
+  flex-direction: row;
+}
+.sideNav {
+  flex: 2;
+  height: 100vh;
+  background-color: rgb(255, 190, 68);
+  box-sizing: border-box;
+  padding: 10px;
+}
+.optionContainer {
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.optionContainer a {
+  text-decoration: none;
+  color: white;
+}
+.mainBoard {
+  flex: 8;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.wrapBoxs {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  border: 1px solid black;
+  justify-content: space-between;
+}
+.box {
+  border: 1px solid black;
+  width: 30%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+/* user style */
+#addUserForm {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+}
+table{
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+table,tr,td,th{
+  padding: 20px;
+}

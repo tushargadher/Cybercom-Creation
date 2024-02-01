@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Page</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="dashContainer">
+      <div class="sideNav">
+        <div class="optionContainer">
+          <span style="color: white" id="loginUserName"></span>
+          <a href="http://127.0.0.1:5500/HTML/Dashboard.html">Dashboard</a>
+          <a href="http://127.0.0.1:5500/HTML/User.html">Users</a>
+          <a href="http://127.0.0.1:5500/HTML/LoginSession.html"
+            >Login Session</a
+          >
+          <a href="http://127.0.0.1:5500/HTML/login.html">Logout</a>
+        </div>
+      </div>
+      <div class="mainBoard">
+        <span>Add User</span>
+        <form action="" id="addUserForm">
+          <input type="text" placeholder="Name" id="name" />
+          <span id="name_error"></span>
+          <input type="email" placeholder="Email" id="email" />
+          <span id="email_error"></span>
+          <input type="password" placeholder="Password" id="password" />
+          <span id="password_error"></span>
+          <input type="date" placeholder="BirthDay" id="birthdate" />
+          <span id="birthday_error"></span>
+          <input type="submit" value="Add User" class="button" />
+        </form>
+
+        <h1>User List</h1>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Birthdate</th>
+              <th>Age</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- adding users dyanamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/JavaScript/UserScript.js"></script>
+  </body>
+</html>
