@@ -20,17 +20,17 @@
         </div>
       </div>
       <div class="mainBoard">
-        <span>Add User</span>
+        <span id="userPageHeading">Add User</span>
         <form action="" id="addUserForm">
           <input type="text" placeholder="Name" id="name" />
-          <span id="name_error"></span>
+          <span id="name_error" class="error"></span>
           <input type="email" placeholder="Email" id="email" />
-          <span id="email_error"></span>
+          <span id="email_error" class="error"></span>
           <input type="password" placeholder="Password" id="password" />
-          <span id="password_error"></span>
+          <span id="password_error" class="error"></span>
           <input type="date" placeholder="BirthDay" id="birthdate" />
-          <span id="birthday_error"></span>
-          <input type="submit" value="Add User" class="button" />
+          <span id="birthday_error" class="error"></span>
+          <input type="submit" value="Add User" class="button" id="AddUserButton" />
         </form>
 
         <h1>User List</h1>

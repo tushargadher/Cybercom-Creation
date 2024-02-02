@@ -26,6 +26,8 @@ registrationForm.addEventListener("submit", function (e) {
     State
   );
   if (formValid) {
+    const usersData = JSON.parse(localStorage.getItem("usersData")) || [];
+    //creating unique id for users
     let user_id = Date.now();
     let userInfo = {
       id: user_id,
@@ -36,7 +38,8 @@ registrationForm.addEventListener("submit", function (e) {
       state: State,
       isAdmin: true,
     };
-    localStorage.setItem("AdminInfo", JSON.stringify(userInfo));
+    usersData.push(userInfo);
+    localStorage.setItem("usersData", JSON.stringify(usersData));
     alert("User Registration Successfully");
     window.location.href = "http://127.0.0.1:5500/HTML/login.html";
   }

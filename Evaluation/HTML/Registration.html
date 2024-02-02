@@ -11,22 +11,22 @@
       <p class="heading">Registration</p>
       <form action="" id="registrationForm">
         <input type="text" name="name" id="name" placeholder="Name" />
-        <span id="name_error"></span>
+        <span id="name_error" class="error"></span>
         <input type="email" name="email" id="email" placeholder="Email" />
-        <span id="email_error"></span>
+        <span id="email_error" class="error"></span>
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Password"
         />
-        <span id="password_error"></span>
+        <span id="password_error" class="error"></span>
         <input
           type="password"
           name="conformPassword"
           id="conformPassword"
           placeholder="conform Password"
-        /><span id="ConformPassword_error"></span>
+        /><span id="ConformPassword_error" class="error"></span>
 
         <select id="selectCity" name="selectCity">
           <option value="" selected disabled>Select City</option>
@@ -34,19 +34,19 @@
           <option value="Surat">Surat</option>
           <option value="Rajkot">Rajkot</option>
         </select>
-        <span id="city_error"></span>
+        <span id="city_error" class="error"></span>
         <select id="selectState" name="selectState">
           <option value="" selected disabled>Select State</option>
           <option value="GujRat">GujRat</option>
           <option value="Delhi">Delhi</option>
           <option value="Panjab">Panjab</option>
         </select>
-        <span id="state_error"></span>
+        <span id="state_error" class="error"></span>
         <div>
           <input type="checkbox" name="termConditions" id="termCheckBox" />
           <label for="termCheckBox"> Terms & Conditions</label>
         </div>
-        <span id="checkbox_error"></span>
+        <span id="checkbox_error" class="error"></span>
         <input
           type="submit"
           value="Register"

@@ -2,9 +2,17 @@
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+:root {
+  --Bgcolor: rgb(255, 190, 68);
+  --buttonBgColor: orange;
+}
 .heading {
   font-size: 20px;
   margin-bottom: 20px;
+}
+.error {
+  font-size: 10px;
+  color: red;
 }
 .container {
   height: 100vh;
@@ -23,14 +31,14 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(255, 220, 154);
+  background-color: var(--FormBgcolor);
 }
 #loginForm input {
   width: 80%;
   height: 10%;
 }
 .button {
-  background-color: orange;
+  background-color: var(--buttonBgColor);
   color: white;
   border: none;
 }
@@ -67,9 +75,9 @@
 .sideNav {
   flex: 2;
   height: 100vh;
-  background-color: rgb(255, 190, 68);
+  background-color: var(--Bgcolor);
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px;
 }
 .optionContainer {
   height: 35%;
@@ -82,7 +90,7 @@
   color: white;
 }
 .mainBoard {
-  flex: 8;
+  flex: 12;
   height: 100vh;
   box-sizing: border-box;
   padding: 20px;
@@ -109,10 +117,17 @@
   display: flex;
   justify-content: space-between;
 }
-table{
+table {
   margin-top: 20px;
   border-collapse: collapse;
 }
-table,tr,td,th{
+table,
+tr,
+td,
+th {
   padding: 20px;
+}
+#welcomeMessage {
+  font-size: 20px;
+  font-weight: bold;
 }

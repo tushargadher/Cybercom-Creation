@@ -1,29 +1,49 @@
-
 $(document).ready(function () {
-
-
-  $("#RegisterNowButton").click(function () {
-    window.location.href = "http://127.0.0.1:5500/HTML/Registration.html";
-  });
-  let loggedUser = JSON.parse(localStorage.getItem("AdminInfo"));
-  console.log(loggedUser);
-  if (loggedUser.isAdmin) {
+  let usersData = JSON.parse(localStorage.getItem("usersData")) || [];
+  //if usersData is empty its mean admin not registerd ,means we hide registerbutton when the admin is registered
+  if (usersData.length) {
     $("#RegisterNowButton").hide();
     $("#or").hide();
   }
-
   $("#loginForm").submit(function (e) {
     e.preventDefault();
     // const formValid = formValidation(email, password);
-
     let email = $("#email").val();
     let password = $("#password").val();
-    if (loggedUser.email == email && loggedUser.password == password) {
-      // alert("Login SuccessFully..");
-      window.location.href = "http://127.0.0.1:5500/HTML/Dashboard.html";
-    } else {
-      alert("Please Check Your Login Details");
-    }
+
+    //basic login functionality for all user
+    usersData.forEach((user) => {
+      console.log(email);
+      console.log(user.email);
+      if (email == user.email && password == user.password && user.isAdmin) {
+        //user is admin
+
+        //creating
+        const loggedUser = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          isAdmin: user.isAdmin,
+        };
+        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+        alert("Logged in as Admin");
+        window.location.href = "http://127.0.0.1:5500/HTML/Dashboard.html";
+      } else {
+        const loggedUser = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          isAdmin: user.isAdmin,
+        };
+        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+        alert("Logged in as User");
+        // window.location.href = "http://127.0.0.1:5500/HTML/Sub_user.html";
+      }
+    });
+  });
+
+  $("#RegisterNowButton").click(function () {
+    window.location.href = "http://127.0.0.1:5500/HTML/Registration.html";
   });
 });
 
