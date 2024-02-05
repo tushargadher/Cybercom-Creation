@@ -38,7 +38,7 @@ $(document).ready(function () {
             name: filterUser[0].name,
             email: filterUser[0].email,
             isAdmin: filterUser[0].isAdmin,
-            
+            birthdate: filterUser[0].birthdate,
           };
           sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser));
 

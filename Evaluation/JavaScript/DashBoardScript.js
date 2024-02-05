@@ -25,10 +25,28 @@ $("#logoutButton").click(function () {
     $("#logoutButton").attr("href", "http://127.0.0.1:5500/HTML/login.html");
   }
 });
+const checkBirthDay = (user) => {
+  let birthdate = new Date(user.birthdate);
+  // let birthday = birthdate.getDay() + 1;
+  let birthmonth = birthdate.getMonth() + 1;
+  let birthYear = birthdate.getFullYear();
+  let currentTime = new Date();
+  let currentmonth = currentTime.getMonth() + 1;
+  let currentYear = currentTime.getFullYear();
+  console.log(birthmonth, birthYear);
+  console.log(currentmonth, currentYear);
+
+  if (birthmonth == currentmonth && birthYear == currentYear) {
+    document.getElementById(
+      "birthDayTag"
+    ).innerHTML = `<h2>Today's is  ${user.name} Birthday</h2>`;
+  }
+};
 
 let usersData = JSON.parse(localStorage.getItem("usersData")) || [];
 
 const minorPeoples = usersData.filter((user) => {
+  checkBirthDay(user);
   let age = calculateAge(user.birthdate);
   console.log(age);
   if (age < 18) {
