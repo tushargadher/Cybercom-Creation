@@ -21,3 +21,22 @@ $("#logoutButton").click(function () {
     $("#logoutButton").attr("href", "http://127.0.0.1:5500/HTML/login.html");
   }
 });
+
+RenderUser();
+function RenderUser() {
+  let usersData = JSON.parse(localStorage.getItem("usersData")) || [];
+  console.log(usersData);
+  let tbody = document.getElementsByTagName("tbody")[0];
+  tbody.innerHTML = "";
+  usersData.forEach((user) => {
+    if (!user.isAdmin && user.loginTime && user.logoutTime) {
+      let row = document.createElement("tr");
+      row.innerHTML = `
+      <td>${user.name}</td>
+      <td>${user.loginTime}</td>
+      <td>${user.logoutTime}</td>
+      `;
+      tbody.appendChild(row);
+    }
+  });
+}

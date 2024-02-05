@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sub User</title>
+    <title>Login Session Page</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
@@ -12,14 +12,26 @@
         <div class="optionContainer">
           <span style="color: white" id="loginUserName"></span>
           <a href="http://127.0.0.1:5500/HTML/Dashboard.html">Dashboard</a>
-          <a href="" id="logoutButton"
-          >Logout</a
-        >
+          <a href="http://127.0.0.1:5500/HTML/User.html">Users</a>
+          <a href="http://127.0.0.1:5500/HTML/userSession.html"
+            >Login Session</a
+          >
+          <a href="" id="logoutButton">Logout</a>
         </div>
       </div>
       <div class="mainBoard">
-        <p id="welcomeMessage">Welcome to Cybercom Creation</p>
-        <span>Today's is 'ABC' BirthDay</span>
+        <span>User Session Logs</span>
+
+        <table border="1" id="userSessionTable">
+          <thead>
+            <th>Name</th>
+            <th>Login Date Time</th>
+            <th>Logout Date Time</th>
+          </thead>
+          <tbody>
+            <!-- dyanamically adding user session info -->
+          </tbody>
+        </table>
       </div>
     </div>
     <script
@@ -27,6 +39,6 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-    <script src="/JavaScript/Sub_user.js"></script>
+    <script src="/JavaScript/userSession.js"></script>
   </body>
 </html>

@@ -1,6 +1,28 @@
-let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-$("#loginUserName").html(`Hello ,${loggedUser.name}`);
-var isUserUpdate = false;
+let loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
+console.log(loggedUser);
+if (loggedUser) {
+  $("#loginUserName").html(`Hello ,${loggedUser.name}`);
+} else {
+  alert("Please Login to access portal");
+  window.location.href = "http://127.0.0.1:5500/HTML/login.html";
+}
+$("#logoutButton").click(function () {
+  let confirmed = confirm("Are you sure to logout?");
+  if (confirmed) {
+    sessionStorage.removeItem("loggedUser");
+    let usersData = JSON.parse(localStorage.getItem("usersData"));
+    let indexOfuser = usersData.findIndex((user) => user.id === loggedUser.id);
+    console.log(usersData[indexOfuser]);
+    usersData[indexOfuser] = {
+      ...usersData[indexOfuser],
+      logoutTime: new Date().toLocaleString(),
+    };
+    console.log(usersData[indexOfuser]);
+    localStorage.setItem("usersData", JSON.stringify(usersData));
+    $("#logoutButton").attr("href", "http://127.0.0.1:5500/HTML/login.html");
+  }
+});
+
 RenderUsers();
 //add user
 $("#addUserForm").submit(function (e) {
@@ -32,6 +54,8 @@ $("#addUserForm").submit(function (e) {
           password: password,
           birthdate: birthdate,
           isAdmin: false,
+          loginTime: null,
+          logoutTime: null,
         },
       ];
       localStorage.setItem("usersData", JSON.stringify(tableData));
@@ -42,15 +66,15 @@ $("#addUserForm").submit(function (e) {
   }
 });
 
-function calculateAge(birthYear) {
-  console.log(birthYear);
+function calculateAge(userBirthYear) {
+  let currentTime = new Date();
+  let currentYear = currentTime.getFullYear();
+  let date = new Date(userBirthYear);
+  let birthYear = date.getFullYear();
+  return currentYear - birthYear;
 }
 function BindEditUserDate(userId) {
-  isUserUpdate = true;
-  console.log("bind user data");
-  console.log(typeof userId);
   $("#AddUserButton").attr("data-id", userId); //adding data-id so we can check form is for updating user or adding new user
-
   $("#AddUserButton").attr("value", "Update User");
   $("#userPageHeading").html("Update User");
   let tableData = JSON.parse(localStorage.getItem("usersData")) || [];
@@ -90,6 +114,7 @@ function updateUser(userId) {
   alert("User Updated");
   $("#AddUserButton").attr("value", "Add User");
   $("#userPageHeading").html("Add User");
+  $("#AddUserButton").removeAttr("data-id");
 }
 
 //delete user function
@@ -132,7 +157,7 @@ function RenderUsers() {
             <td>${user.email}</td>
             <td>${user.password}</td>
             <td>${user.birthdate}</td>
-            <td></td>
+            <td>${calculateAge(user.birthdate)}</td>
             <td>
               <button onClick="BindEditUserDate(${user.id});">Edit</button>
               <button onClick="deleteUser(${user.id});">Delete</button>
@@ -143,6 +168,7 @@ function RenderUsers() {
     });
   }
 }
+
 //form validation function
 function formValidation(name, email, password, birthdate) {
   let valid = true;

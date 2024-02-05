@@ -131,3 +131,13 @@ th {
   font-size: 20px;
   font-weight: bold;
 }
+#userSessionTable {
+  width: 80%;
+}
+#userSessionTable th {
+  background-color: gray;
+  color: white;
+}
+#userSessionTable td {
+height: 10px;
+}

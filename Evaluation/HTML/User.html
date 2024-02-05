@@ -13,10 +13,12 @@
           <span style="color: white" id="loginUserName"></span>
           <a href="http://127.0.0.1:5500/HTML/Dashboard.html">Dashboard</a>
           <a href="http://127.0.0.1:5500/HTML/User.html">Users</a>
-          <a href="http://127.0.0.1:5500/HTML/LoginSession.html"
+          <a href="http://127.0.0.1:5500/HTML/userSession.html"
             >Login Session</a
           >
-          <a href="http://127.0.0.1:5500/HTML/login.html">Logout</a>
+          <a href="" id="logoutButton"
+            >Logout</a
+          >
         </div>
       </div>
       <div class="mainBoard">
@@ -30,7 +32,12 @@
           <span id="password_error" class="error"></span>
           <input type="date" placeholder="BirthDay" id="birthdate" />
           <span id="birthday_error" class="error"></span>
-          <input type="submit" value="Add User" class="button" id="AddUserButton" />
+          <input
+            type="submit"
+            value="Add User"
+            class="button"
+            id="AddUserButton"
+          />
         </form>
 
         <h1>User List</h1>

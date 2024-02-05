@@ -1,45 +1,63 @@
 $(document).ready(function () {
   let usersData = JSON.parse(localStorage.getItem("usersData")) || [];
-  //if usersData is empty its mean admin not registerd ,means we hide registerbutton when the admin is registered
+
+  console.log(usersData);
+  //if usersData is empty its mean admin is not registerd ,so we will display register button else we hide button
   if (usersData.length) {
     $("#RegisterNowButton").hide();
     $("#or").hide();
   }
   $("#loginForm").submit(function (e) {
     e.preventDefault();
-    // const formValid = formValidation(email, password);
     let email = $("#email").val();
     let password = $("#password").val();
+    const formValid = formValidation(email, password);
+    if (formValid) {
+      //if the user with given email is found then we will do login process else we show error like "user not found"
+      const filterUser = usersData.filter((user) => user.email === email);
+      if (filterUser.length) {
+        if (
+          email === filterUser[0].email &&
+          password === filterUser[0].password
+        ) {
+          //after login update the value of login time
+          let indexOfUser = usersData.findIndex(
+            (user) => user.id === filterUser[0].id
+          );
+          if (indexOfUser >= 0) {
+            //updating value of use
+            usersData[indexOfUser] = {
+              ...usersData[indexOfUser],
+              loginTime: new Date().toLocaleString(),
+            };
+            console.log(usersData[indexOfUser]);
+            localStorage.setItem("usersData", JSON.stringify(usersData));
+          }
+          const loggedUser = {
+            id: filterUser[0].id,
+            name: filterUser[0].name,
+            email: filterUser[0].email,
+            isAdmin: filterUser[0].isAdmin,
+            
+          };
+          sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser));
 
-    //basic login functionality for all user
-    usersData.forEach((user) => {
-      console.log(email);
-      console.log(user.email);
-      if (email == user.email && password == user.password && user.isAdmin) {
-        //user is admin
-
-        //creating
-        const loggedUser = {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          isAdmin: user.isAdmin,
-        };
-        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
-        alert("Logged in as Admin");
-        window.location.href = "http://127.0.0.1:5500/HTML/Dashboard.html";
+          if (filterUser[0].isAdmin) {
+            alert("Logged in as Admin");
+            window.location.href = "http://127.0.0.1:5500/HTML/Dashboard.html";
+          } else {
+            alert("Logged in as User");
+            window.location.href = "http://127.0.0.1:5500/HTML/Sub_user.html";
+          }
+        } else {
+          alert("Please Check Your Login Credentials !");
+        }
       } else {
-        const loggedUser = {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          isAdmin: user.isAdmin,
-        };
-        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
-        alert("Logged in as User");
-        // window.location.href = "http://127.0.0.1:5500/HTML/Sub_user.html";
+        alert("User Not Found");
       }
-    });
+    } else {
+      console.log("Fomr invails");
+    }
   });
 
   $("#RegisterNowButton").click(function () {
@@ -50,15 +68,16 @@ $(document).ready(function () {
 function formValidation(email, password) {
   let valid = true;
   if (email === "") {
-    document.getElementById("email_error").innerText = "Required Felid";
+    $("#email_error").html("Required Felid");
     valid = false;
   } else {
-    document.getElementById("email_error").innerText = "";
+    $("#email_error").html("");
   }
   if (password === "") {
-    document.getElementById("password_error").innerText = "Required Felid";
+    $("#password_error").html("Required Felid");
     valid = false;
   } else {
-    document.getElementById("password_error").innerText = "";
+    $("#password_error").html("");
   }
+  return valid;
 }
