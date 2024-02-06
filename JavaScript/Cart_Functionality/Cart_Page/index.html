@@ -8,7 +8,10 @@
   <body>
     <div class="container">
       <div class="orderContainer">
-        <table border="1">
+        <table>
+          <caption>
+            Cart Details
+          </caption>
           <thead>
             <th>Product Name</th>
             <th>Quantity</th>
@@ -19,11 +22,15 @@
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2">Total Due (Including 18% Tax)</td>
+              <td colspan="2" style="font-weight: bold;">Total Due (Including 18% Tax)</td>
               <td id="totalDue"></td>
             </tr>
           </tfoot>
         </table>
+        <div class="buttonContainer">
+          <button id="addProductButton">ADD PRODUCT</button>
+          <button id="placeorderButton">PLACE ORDER</button>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
