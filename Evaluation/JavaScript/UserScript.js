@@ -154,13 +154,13 @@ function RenderUsers() {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${user.name}</td>
-            <td>${user.email}</td>
+            <td><a href="mailto:${user.email}">${user.email}</a></td>
             <td>${user.password}</td>
             <td>${user.birthdate}</td>
             <td>${calculateAge(user.birthdate)}</td>
             <td>
-              <button onClick="BindEditUserDate(${user.id});">Edit</button>
-              <button onClick="deleteUser(${user.id});">Delete</button>
+              <a onClick="BindEditUserDate(${user.id});">Edit</a>
+              <a onClick="deleteUser(${user.id});">Delete</a>
             </td>
           `;
         tbody.appendChild(row);

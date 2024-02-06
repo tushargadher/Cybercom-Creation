@@ -1,9 +1,11 @@
 * {
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
 }
 :root {
-  --Bgcolor: rgb(255, 190, 68);
+  /* --Bgcolor: rgb(255, 190, 68); */
+  --Bgcolor: #b45f06;
   --buttonBgColor: orange;
 }
 .heading {
@@ -31,7 +33,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--FormBgcolor);
+  background-color: rgb(255, 237, 203);
 }
 #loginForm input {
   width: 80%;
@@ -40,7 +42,7 @@
 .button {
   background-color: var(--buttonBgColor);
   color: white;
-  border: none;
+  border: 1px solid black;
 }
 /*registration page style*/
 #registrationForm {
@@ -94,54 +96,99 @@
   height: 100vh;
   box-sizing: border-box;
   padding: 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+}
+.mainBoard > span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* margin: 1rem; */
 }
 .wrapBoxs {
   display: flex;
   width: 100%;
   height: 50%;
   /* border: 1px solid black; */
+  padding: 25px;
   justify-content: space-between;
 }
 .box {
   border: 1px solid black;
   width: 30%;
-  height: 50%;
+  height: 60%;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
+.box > span {
+  font-size: 1.3rem;
+}
+#birthDayTag {
+  /* border: 1px solid red; */
+  /* margin: 0 auto; */
+}
 /* user style */
 #addUserForm {
   /* border: 1px solid black; */
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  height: 17vh;
+  justify-content: space-between;
+}
+#addUserForm input {
+  padding: 5px;
+  width: 22%;
+}
+.inputGroup {
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+.buttonGroup {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#userPageHeading {
+  margin-bottom: 1rem;
 }
 table {
   margin-top: 20px;
   border-collapse: collapse;
+  width: 100%;
+  text-align: left;
 }
-table,
-tr,
+th {
+  background-color: rgb(62, 62, 62);
+  color: white;
+  border-bottom: 1px solid gray;
+}
+
 td,
 th {
-  padding: 20px;
+  padding: 10px;
+  border: none;
+}
+a{
+  color: blue;
+  text-decoration: underline;
+}
+tr {
+  border-bottom: 1px solid gray;
 }
 #welcomeMessage {
   font-size: 20px;
   margin: 40px;
   font-weight: bold;
 }
-#userSessionTable {
-  width: 80%;
-}
-#userSessionTable th {
-  background-color: gray;
-  color: white;
-}
-#userSessionTable td {
-  height: 10px;
-}
+
 .subUser_MainBoard {
   flex: 12;
   display: flex;

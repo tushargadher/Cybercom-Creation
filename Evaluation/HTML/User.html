@@ -16,28 +16,31 @@
           <a href="http://127.0.0.1:5500/HTML/userSession.html"
             >Login Session</a
           >
-          <a href="" id="logoutButton"
-            >Logout</a
-          >
+          <a href="" id="logoutButton">Logout</a>
         </div>
       </div>
       <div class="mainBoard">
         <span id="userPageHeading">Add User</span>
         <form action="" id="addUserForm">
-          <input type="text" placeholder="Name" id="name" />
-          <span id="name_error" class="error"></span>
-          <input type="email" placeholder="Email" id="email" />
-          <span id="email_error" class="error"></span>
-          <input type="password" placeholder="Password" id="password" />
-          <span id="password_error" class="error"></span>
-          <input type="date" placeholder="BirthDay" id="birthdate" />
-          <span id="birthday_error" class="error"></span>
-          <input
-            type="submit"
-            value="Add User"
-            class="button"
-            id="AddUserButton"
-          />
+          <div class="inputGroup">
+            <input type="text" placeholder="Name" id="name" />
+            <span id="name_error" class="error"></span>
+            <input type="email" placeholder="Email" id="email" />
+            <span id="email_error" class="error"></span>
+            <input type="password" placeholder="Password" id="password" />
+            <span id="password_error" class="error"></span>
+            <input type="date" placeholder="BirthDay" id="birthdate" />
+            <span id="birthday_error" class="error"></span>
+          </div>
+
+          <div class="buttonGroup">
+            <input
+              type="submit"
+              value="Add User"
+              class="button"
+              id="AddUserButton"
+            />
+          </div>
         </form>
 
         <h1>User List</h1>
