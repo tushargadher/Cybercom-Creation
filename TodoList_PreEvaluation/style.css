@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+.error {
+  font-size: 0.9rem;
+  color: red;
+}
+.container {
+  /* background-color: red; */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+.formContainer {
+  box-sizing: border-box;
+  background-color: #a1a1a1;
+  padding: 20px;
+  flex: 3;
+}
+form {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input,
+textarea {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin: 5px;
+  width: 100%;
+  resize: none;
+}
+#addTaskButton {
+  width: max-content;
+  padding: 5px 20px;
+}
+#addTaskButton:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
+}
+.taskContainer {
+  box-sizing: border-box;
+  background-color: #e8e8e8;
+  padding: 20px;
+  flex: 10;
+}
+.taskList{
+  /* border: 1px solid black; */
+  /* display: flex; */
+  width: 100%;
+}
+.task {
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  box-shadow: 0px 0px 5px black;
+  width: 50%;
+}
+.taskControl {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+}
+.buttonGroup button {
+  border: none;
+  border-radius: 100%;
+  padding: 3px 10px;
+}
+.buttonGroup button:nth-child(1) {
+  background-color: #9999ff;
+}
+.buttonGroup button:nth-child(2) {
+  background-color: #ff8888;
+}
+.buttonGroup button:hover {
+  cursor: pointer;
+}
+.taskHead {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.taskDetail {
+  font-size: 0.9rem;
+  padding: 20px 0px;
+}
+.timeStatus {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
