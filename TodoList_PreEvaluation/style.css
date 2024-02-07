@@ -15,15 +15,17 @@
 }
 .formContainer {
   box-sizing: border-box;
-  background-color: #a1a1a1;
+  background-color: #d8d8d8;
   padding: 20px;
-  flex: 3;
+  /* flex: 3; */
+  width: 20%;
 }
 form {
   /* border: 1px solid black; */
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 }
 
 form input,
@@ -34,25 +36,38 @@ textarea {
   margin: 5px;
   width: 100%;
   resize: none;
+  border: 1px solid black;
+}
+input[type="radio"] {
+  width: auto;
 }
 #addTaskButton {
   width: max-content;
   padding: 5px 20px;
+  background-color: rgb(41, 41, 41);
+  color: white;
 }
 #addTaskButton:hover {
   cursor: pointer;
   box-shadow: 0 0 5px black;
+  background-color: rgb(76, 75, 75);
 }
 .taskContainer {
   box-sizing: border-box;
-  background-color: #e8e8e8;
+  /* background-color: #e8e8e8; */
   padding: 20px;
-  flex: 10;
+  /* flex: 10; */
+  width: 80%;
+  overflow-y: scroll;
 }
-.taskList{
+.taskList {
   /* border: 1px solid black; */
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
+  height: auto;
 }
 .task {
   background-color: #f3f3f3;
@@ -60,9 +75,11 @@ textarea {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  justify-content: space-around;
+  margin: 10px 0px;
   box-shadow: 0px 0px 5px black;
-  width: 50%;
+  width: 45%;
+  /* height: 20%; */
 }
 .taskControl {
   /* border: 1px solid black; */

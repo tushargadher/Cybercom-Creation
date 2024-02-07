@@ -15,15 +15,51 @@
       <div class="formContainer">
         <h2>ADD NEW TASK</h2>
         <form action="">
-          <input type="text" placeholder="Enter Task Name" id="taskName" />
+          <label for="taskName">Enter Task Name</label>
+          <input type="text" placeholder="" id="taskName" />
           <span id="name_error" class="error"></span>
+          <label for="taskDescription">Enter Task Description</label>
           <textarea
             cols="30"
             rows="6"
-            placeholder="Enter Task Description"
+            placeholder=""
             id="taskDescription"
           ></textarea>
           <span id="description_error" class="error"></span>
+          <!-- Priority Levels -->
+          <span>Priority Levels</span>
+          <div>
+            <input
+              type="radio"
+              id="highPriority"
+              name="taskPriority"
+              value="High Priority"
+            />
+            <label for="highPriority">High Priority</label><br />
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="mediumPriority"
+              name="taskPriority"
+              value="Medium Priority"
+            />
+            <label for="mediumPriority">Medium Priority</label><br />
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="lowPriority"
+              name="taskPriority"
+              value="Low Priority"
+            />
+            <label for="lowPriority">Low Priority</label>
+          </div>
+          <span id="taskPriority_error" class="error"></span>
+          <!-- due date -->
+          <label for="dueDate">Due Date</label>
+          <input type="date" name="dueDate" id="dueDate" />
+          <span id="dueDate_error" class="error"></span>
           <input type="submit" value="ADD TASK" id="addTaskButton" />
         </form>
       </div>

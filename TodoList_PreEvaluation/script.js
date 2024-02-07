@@ -4,9 +4,8 @@ const LOCALSTORAGE = {
 let form = document.querySelector("form");
 let addTaskButton = document.getElementById("addTaskButton");
 
-
 //form validation function
-function formValidation(taskName, taskDescription) {
+function formValidation(taskName, taskDescription, taskPriority, dueDate) {
   let vaild = true;
   if (taskName === "") {
     $("#name_error").html("Enter Name");
@@ -20,6 +19,21 @@ function formValidation(taskName, taskDescription) {
   } else {
     $("#description_error").html("");
   }
+  // for (let i = 0; i < taskPriority.length; i++) {
+  //   if (!taskPriority[i].checked) {
+  //     $("#taskPriority_error").html("Please Select Priority");
+  //     vaild = false;
+  //   } else {
+  //     $("#taskPriority_error").html("");
+  //   }
+  // }
+  if (!dueDate) {
+    $("#dueDate_error").html("Select Due Date");
+    vaild = false;
+  } else {
+    $("#dueDate_error").html("");
+  }
+
   return vaild;
 }
 const updateTask = (id) => {
@@ -47,13 +61,25 @@ const updateTask = (id) => {
 const addToLocalStorage = () => {
   let taskName = document.getElementById("taskName").value;
   let taskDescription = document.getElementById("taskDescription").value;
+  let taskPriority = document.getElementsByName("taskPriority");
+  let dueDate = document.getElementById("dueDate").value;
+
   let taskUpdateId = parseInt(addTaskButton.getAttribute("data-id"));
   // let formVaild = validateForm();
-  const formValid = formValidation(taskName, taskDescription);
+  
+  const formValid = formValidation(
+    taskName,
+    taskDescription,
+    taskPriority,
+    dueDate
+  );
+  console.log(formValid);
   if (formValid) {
     if (taskUpdateId) {
+      console.log("add to local up");
       updateTask(taskUpdateId);
     } else {
+      console.log("add to local");
       let taskList =
         JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
       let taskName = document.getElementById("taskName").value;
@@ -62,7 +88,7 @@ const addToLocalStorage = () => {
         id: Date.now(),
         name: taskName,
         description: taskDescription,
-        savedOn: new Date().toLocaleString(),
+        createdAt: new Date().toLocaleString(),
         updatedOn: null,
       };
       taskList = [...taskList, newTask];
@@ -116,7 +142,7 @@ const renderTasks = () => {
           </div>
           <span class="taskDetail">${task.description}</span>
           <div class="timeStatus">
-            <span>Saved on : ${task.savedOn}</span>
+            <span>Saved on : ${task.createdAt}</span>
             <span>Update On : ${task.updatedOn}</span>
           </div>
     `;
