@@ -5,48 +5,122 @@ let form = document.querySelector("form");
 let addTaskButton = document.getElementById("addTaskButton");
 
 //form validation function
-function formValidation(taskName, taskDescription, taskPriority, dueDate) {
-  let vaild = true;
-  if (taskName === "") {
-    $("#name_error").html("Enter Name");
-    vaild = false;
+function formValidation(taskName, taskDescription, dueDate, taskCategory) {
+  let valid = true;
+  if (taskName.trim() === "") {
+    $("#name_error").html("Please Enter Task Name");
+    valid = false;
   } else {
     $("#name_error").html("");
   }
-  if (taskDescription === "") {
-    $("#description_error").html("Enter Task Description");
-    vaild = false;
+
+  if (taskDescription.trim() === "") {
+    $("#description_error").html("Please Enter Task Description");
+    valid = false;
   } else {
     $("#description_error").html("");
   }
-  // for (let i = 0; i < taskPriority.length; i++) {
-  //   if (!taskPriority[i].checked) {
-  //     $("#taskPriority_error").html("Please Select Priority");
-  //     vaild = false;
-  //   } else {
-  //     $("#taskPriority_error").html("");
-  //   }
-  // }
+
+  if (taskCategory === "") {
+    $("#category_error").html("Please Select Category");
+    valid = false;
+  } else {
+    $("#category_error").html("");
+  }
+
+  if (!$('input[name="taskPriority"]:checked').length > 0) {
+    $("#taskPriority_error").html("Please Select Priority");
+    valid = false;
+  } else {
+    $("#taskPriority_error").html("");
+  }
   if (!dueDate) {
     $("#dueDate_error").html("Select Due Date");
-    vaild = false;
+    valid = false;
   } else {
     $("#dueDate_error").html("");
   }
-
-  return vaild;
+  return valid;
 }
+
+//task complete funtion
+const handleCompleted = (id) => {
+  let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
+  let taskIndex = taskList.findIndex((task) => task.id === id);
+  if (taskList[taskIndex].isCompeted) {
+    alert("Task is already marks as completed !");
+    return;
+  }
+  let conformed = confirm("Mark this task as completed ?");
+  if (conformed) {
+    if (taskIndex >= 0) {
+      taskList[taskIndex] = {
+        ...taskList[taskIndex],
+        isCompeted: true,
+      };
+      localStorage.setItem(LOCALSTORAGE.taskList, JSON.stringify(taskList));
+    }
+  }
+  renderTasks();
+};
+
+//category wise redner
+const rednerCategory = (selected) => {
+  let taskListContainer = document.querySelector(".categoryTasklist");
+  taskListContainer.innerHTML = "";
+  let selectedCategory = selected.value;
+  let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
+  const filterTasks = taskList.filter(
+    (task) => task.category === selectedCategory
+  );
+
+  filterTasks.forEach((task) => {
+    const HTMLDATE = `
+          <div class="taskControl">
+          <span class="taskHead">${task.name}</span>
+         
+        </div>
+        <div class="taskInfo">
+          <span>Category - ${task.category}</span>
+          <span>Priority - ${task.priority} </span>
+        </div>
+        <span class="taskDetail">${task.description}</span>
+        <span class="duedate">Due Date : ${task.dueDate}</span>
+        <div class="timeStatus">
+          <span>Added On : ${task.createdAt}</span>
+          <span>Update On : ${task.updatedOn}</span>
+        </div>
+    `;
+    let taskDiv = document.createElement("div");
+    taskDiv.setAttribute("class", "task");
+    taskDiv.innerHTML = HTMLDATE;
+    taskListContainer.appendChild(taskDiv);
+  });
+  taskListContainer.innerHTML = filterTasks.length
+    ? taskListContainer.innerHTML
+    : "<h2>No Task Found For This Category</h2>";
+};
+
+//function for updating task
 const updateTask = (id) => {
   let taskName = $("#taskName").val();
   let taskDescription = $("#taskDescription").val();
+  let taskCategory = $("#taskCategory").val();
+  let dueDate = $("#dueDate").val();
+  let priorityValue = document.querySelector(
+    'input[name="taskPriority"]:checked'
+  ).value;
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
   let taskIndex = taskList.findIndex((task) => task.id === id);
-  console.log(taskIndex);
+
   if (taskIndex >= 0) {
     taskList[taskIndex] = {
       ...taskList[taskIndex],
       name: taskName,
       description: taskDescription,
+      priority: priorityValue,
+      category: taskCategory,
+      dueDate: dueDate,
       updatedOn: new Date().toLocaleString(),
     };
     localStorage.setItem(LOCALSTORAGE.taskList, JSON.stringify(taskList));
@@ -61,25 +135,24 @@ const updateTask = (id) => {
 const addToLocalStorage = () => {
   let taskName = document.getElementById("taskName").value;
   let taskDescription = document.getElementById("taskDescription").value;
-  let taskPriority = document.getElementsByName("taskPriority");
   let dueDate = document.getElementById("dueDate").value;
-
+  let taskCategory = document.getElementById("taskCategory").value;
   let taskUpdateId = parseInt(addTaskButton.getAttribute("data-id"));
-  // let formVaild = validateForm();
-  
+
   const formValid = formValidation(
     taskName,
     taskDescription,
-    taskPriority,
-    dueDate
+    dueDate,
+    taskCategory
   );
-  console.log(formValid);
+
   if (formValid) {
     if (taskUpdateId) {
-      console.log("add to local up");
       updateTask(taskUpdateId);
     } else {
-      console.log("add to local");
+      let priorityValue = document.querySelector(
+        'input[name="taskPriority"]:checked'
+      ).value;
       let taskList =
         JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
       let taskName = document.getElementById("taskName").value;
@@ -88,12 +161,16 @@ const addToLocalStorage = () => {
         id: Date.now(),
         name: taskName,
         description: taskDescription,
+        priority: priorityValue,
+        category: taskCategory,
+        dueDate: dueDate,
+        isCompeted: false,
         createdAt: new Date().toLocaleString(),
         updatedOn: null,
       };
       taskList = [...taskList, newTask];
       localStorage.setItem(LOCALSTORAGE.taskList, JSON.stringify(taskList));
-      alert("Task Added...");
+      alert("Task Added");
       $("form")[0].reset();
       renderTasks();
     }
@@ -102,7 +179,7 @@ const addToLocalStorage = () => {
 
 //delete task
 const handleDelete = (id) => {
-  let conformed = confirm("Are you sure to delete this task?");
+  let conformed = confirm("Are you sure to remove this task?");
   if (conformed) {
     let taskList =
       JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
@@ -114,47 +191,70 @@ const handleDelete = (id) => {
 
 //edit task function
 const bindTaskData = (id) => {
-  $("#addTaskButton").attr("data-id", id);
-  $("#addTaskButton").attr("value", "UPDATE TASK");
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
   let filterTaskList = taskList.filter((task) => task.id === id);
-  //   console.log(filterTaskList);
-  const { name, description } = filterTaskList[0];
+  const { name, description, category, dueDate, priority, isCompeted } =
+    filterTaskList[0];
+  if (isCompeted) {
+    alert("You can't edit completed task !");
+    return;
+  }
+  $("#addTaskButton").attr("data-id", id);
+  $("#addTaskButton").attr("value", "UPDATE TASK");
+
   $("#taskName").val(name);
   $("#taskDescription").val(description);
+  $("#taskCategory").val(category);
+  $("#dueDate").val(dueDate);
+  // document.querySelector('input[name="taskPriority"]').value = priority;
 };
 
 //renderTask function
 const renderTasks = () => {
-  let taskListContainer = document.querySelector(".taskList");
-  taskListContainer.innerHTML = "";
+  let AllTasklist = document.querySelector(".AllTasklist");
+  AllTasklist.innerHTML = "";
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
-  console.log(taskList);
+
   taskList.forEach((task) => {
-    const HTMLDATE = `<div class="taskControl">
-            <span class="taskHead">${task.name}</span>
-            <div class="buttonGroup">
-              <button onClick="bindTaskData(${task.id});">
-                <i class="fa-regular fa-pen-to-square"></i>
-              </button>
-              <button onClick="handleDelete(${task.id});"><i class="fa-regular fa-trash-can"></i></button>
-            </div>
+    const HTMLDATE = `
+          <div class="taskControl">
+          <span class="taskHead">${task.name}</span>
+          <div class="buttonGroup">
+            <button onClick="handleCompleted(${task.id});"><i class="fa-solid fa-check"></i></button>
+            <button onClick="bindTaskData(${task.id});">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button onClick="handleDelete(${task.id});">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
           </div>
-          <span class="taskDetail">${task.description}</span>
-          <div class="timeStatus">
-            <span>Saved on : ${task.createdAt}</span>
-            <span>Update On : ${task.updatedOn}</span>
-          </div>
+        </div>
+        <div class="taskInfo">
+          <span>Category - ${task.category}</span>
+          <span>Priority - ${task.priority} </span>
+        </div>
+        <span class="taskDetail">${task.description}</span>
+        <span class="duedate">Due Date : ${task.dueDate}</span>
+        <div class="timeStatus">
+          <span>Added On : ${task.createdAt}</span>
+          <span>Update On : ${task.updatedOn}</span>
+        </div>
     `;
     let taskDiv = document.createElement("div");
     taskDiv.setAttribute("class", "task");
     taskDiv.innerHTML = HTMLDATE;
-    taskListContainer.appendChild(taskDiv);
+
+    task.isCompeted ? taskDiv.setAttribute("id", "completeTask") : "";
+    AllTasklist.appendChild(taskDiv);
   });
+  AllTasklist.innerHTML = taskList.length
+    ? AllTasklist.innerHTML
+    : "<h3>Your Todo List is empty. </h3>";
 };
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   addToLocalStorage();
 });
+
 renderTasks();

@@ -33,7 +33,7 @@
               type="radio"
               id="highPriority"
               name="taskPriority"
-              value="High Priority"
+              value="High"
             />
             <label for="highPriority">High Priority</label><br />
           </div>
@@ -42,7 +42,7 @@
               type="radio"
               id="mediumPriority"
               name="taskPriority"
-              value="Medium Priority"
+              value="Medium"
             />
             <label for="mediumPriority">Medium Priority</label><br />
           </div>
@@ -51,7 +51,7 @@
               type="radio"
               id="lowPriority"
               name="taskPriority"
-              value="Low Priority"
+              value="Low"
             />
             <label for="lowPriority">Low Priority</label>
           </div>
@@ -60,13 +60,48 @@
           <label for="dueDate">Due Date</label>
           <input type="date" name="dueDate" id="dueDate" />
           <span id="dueDate_error" class="error"></span>
+          <!-- task category -->
+          <label for="taskCategory">Select Task Category:</label>
+          <select id="taskCategory" name="taskCategory">
+            <option value="" selected disabled>Select Your Category</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Home">Home</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Finance">Finance</option>
+            <option value="Social">Social</option>
+          </select>
+          <span id="category_error" class="error"></span>
           <input type="submit" value="ADD TASK" id="addTaskButton" />
         </form>
       </div>
       <div class="taskContainer">
-        <h2>TASK LIST</h2>
-        <div class="taskList">
-          <!-- dynamic render -->
+        <div class="AlltaskContainer">
+          <h2>ALL TASKS</h2>
+          <div class="AllTasklist">
+            <!-- dynamic render -->
+          </div>
+        </div>
+        <div class="categoryTaskContainer">
+          <h2>CATEGORIES TASKS</h2>
+          <select
+            id="filterCategory"
+            name="filterCategory"
+            onchange="rednerCategory(this)"
+          >
+            <option value="" selected disabled>No Category Selected</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Home">Home</option>
+            <option value="Health">Health</option>
+            <option value="Education">Education</option>
+            <option value="Finance">Finance</option>
+            <option value="Social">Social</option>
+          </select>
+          <div class="categoryTasklist">
+            <!-- dynamic render -->
+          </div>
         </div>
       </div>
     </div>

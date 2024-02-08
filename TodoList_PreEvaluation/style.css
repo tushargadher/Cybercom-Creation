@@ -3,9 +3,15 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 .error {
   font-size: 0.9rem;
   color: red;
+}
+#completeTask {
+  opacity: 0.5;
 }
 .container {
   /* background-color: red; */
@@ -29,11 +35,12 @@ form {
 }
 
 form input,
-textarea {
+textarea,
+#taskCategory {
   padding: 5px;
   border: none;
   border-radius: 3px;
-  margin: 5px;
+  margin: 7px 5px;
   width: 100%;
   resize: none;
   border: 1px solid black;
@@ -41,6 +48,7 @@ textarea {
 input[type="radio"] {
   width: auto;
 }
+
 #addTaskButton {
   width: max-content;
   padding: 5px 20px;
@@ -52,33 +60,55 @@ input[type="radio"] {
   box-shadow: 0 0 5px black;
   background-color: rgb(76, 75, 75);
 }
+
 .taskContainer {
+  display: flex;
   box-sizing: border-box;
-  /* background-color: #e8e8e8; */
   padding: 20px;
-  /* flex: 10; */
-  width: 80%;
-  overflow-y: scroll;
+  /* background-color: #b2ff58; */
+  width: 100%;
+  /* overflow-y: scroll; */
 }
-.taskList {
+.AlltaskContainer,
+.categoryTaskContainer {
   /* border: 1px solid black; */
+
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 100%;
+  justify-content: flex-start;
+  width: 50%;
   height: auto;
+}
+.AllTasklist,
+.categoryTasklist {
+  /* border: 1px solid black; */
+  height: auto;
+  overflow-y: scroll;
+}
+.AllTasklist h3 {
+  color: gray;
+  margin-top: 1rem;
+}
+#filterCategory {
+  margin-top: 10px;
+  padding: 5px;
+  width: 80%;
+}
+.categoryTasklist h2 {
+  margin-top: 1rem;
+  color: red;
 }
 .task {
   background-color: #f3f3f3;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin: 5px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 10px 0px;
-  box-shadow: 0px 0px 5px black;
-  width: 45%;
+  margin: 20px 5px;
+  box-shadow: 0px 0px 6px rgb(119, 119, 119);
+  width: 90%;
   /* height: 20%; */
 }
 .taskControl {
@@ -90,11 +120,15 @@ input[type="radio"] {
   border: none;
   border-radius: 100%;
   padding: 3px 10px;
+  width: max-content;
 }
 .buttonGroup button:nth-child(1) {
-  background-color: #9999ff;
+  background-color: #b2ff58;
 }
 .buttonGroup button:nth-child(2) {
+  background-color: #9999ff;
+}
+.buttonGroup button:nth-child(3) {
   background-color: #ff8888;
 }
 .buttonGroup button:hover {
@@ -104,15 +138,28 @@ input[type="radio"] {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.taskDetail {
+/* .taskInfo span {
+  margin-top: 5px;
   font-size: 0.9rem;
+  opacity: 0.8;
+} */
+.taskDetail {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: black;
   padding: 20px 0px;
 }
-.timeStatus {
-  /* border: 1px solid black; */
+.duedate {
+  color: #ff9292;
+  font-size: 0.8rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.timeStatus,
+.taskInfo {
   display: flex;
   justify-content: space-between;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.8rem;
   opacity: 0.8;
 }
