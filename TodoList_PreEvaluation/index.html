@@ -88,16 +88,28 @@
           <select
             id="filterCategory"
             name="filterCategory"
-            onchange="rednerCategory(this)"
+            onchange="rednerCategory(this.value)"
           >
             <option value="" selected disabled>No Category Selected</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-            <option value="Home">Home</option>
-            <option value="Health">Health</option>
-            <option value="Education">Education</option>
-            <option value="Finance">Finance</option>
-            <option value="Social">Social</option>
+
+            <optgroup label="Status">
+              <option value="true">Completed</option>
+              <option value="false">Pending</option>
+            </optgroup>
+            <optgroup label="Priority">
+              <option value="High">High Priority</option>
+              <option value="Medium">Medium Priority</option>
+              <option value="Low">Low Priority</option>
+            </optgroup>
+            <optgroup label="Category">
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+              <option value="Home">Home</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Finance">Finance</option>
+              <option value="Social">Social</option>
+            </optgroup>
           </select>
           <div class="categoryTasklist">
             <!-- dynamic render -->

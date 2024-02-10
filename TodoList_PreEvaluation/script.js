@@ -47,7 +47,7 @@ function formValidation(taskName, taskDescription, dueDate, taskCategory) {
 const handleCompleted = (id) => {
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
   let taskIndex = taskList.findIndex((task) => task.id === id);
-  if (taskList[taskIndex].isCompeted) {
+  if (taskList[taskIndex].isCompleted) {
     alert("Task is already marks as completed !");
     return;
   }
@@ -56,7 +56,7 @@ const handleCompleted = (id) => {
     if (taskIndex >= 0) {
       taskList[taskIndex] = {
         ...taskList[taskIndex],
-        isCompeted: true,
+        isCompleted: true,
       };
       localStorage.setItem(LOCALSTORAGE.taskList, JSON.stringify(taskList));
     }
@@ -68,13 +68,25 @@ const handleCompleted = (id) => {
 const rednerCategory = (selected) => {
   let taskListContainer = document.querySelector(".categoryTasklist");
   taskListContainer.innerHTML = "";
-  let selectedCategory = selected.value;
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
-  const filterTasks = taskList.filter(
-    (task) => task.category === selectedCategory
-  );
+  const filterCategory = taskList.filter((task) => task.category === selected);
+  const filterPriority = taskList.filter((task) => task.priority === selected);
 
-  filterTasks.forEach((task) => {
+  let filterStatus = [];
+  // if (selected == "true" || selected == "false") {
+  //   if (selected == "true") {
+  //     filterStatus = taskList.filter((task) => task.isCompleted);
+  //   } else {
+  //     filterStatus = taskList.filter((task) => !task.isCompleted);
+  //   }
+  // }
+  if (selected === "true" || selected === "false") {
+    filterStatus = taskList.filter((task) => task.isCompleted === (selected === "true"));
+  }
+
+  const filteredTasks = [...filterCategory, ...filterStatus, ...filterPriority];
+  console.log(filteredTasks);
+  filteredTasks.forEach((task) => {
     const HTMLDATE = `
           <div class="taskControl">
           <span class="taskHead">${task.name}</span>
@@ -88,15 +100,17 @@ const rednerCategory = (selected) => {
         <span class="duedate">Due Date : ${task.dueDate}</span>
         <div class="timeStatus">
           <span>Added On : ${task.createdAt}</span>
-          <span>Update On : ${task.updatedOn}</span>
+          <span>Update On : ${task.updatedOn ? task.updatedOn : "NA"}</span>
+        
         </div>
     `;
     let taskDiv = document.createElement("div");
     taskDiv.setAttribute("class", "task");
+    task.isCompleted ? taskDiv.setAttribute("id", "completeTask") : "";
     taskDiv.innerHTML = HTMLDATE;
     taskListContainer.appendChild(taskDiv);
   });
-  taskListContainer.innerHTML = filterTasks.length
+  taskListContainer.innerHTML = filteredTasks.length
     ? taskListContainer.innerHTML
     : "<h2>No Task Found For This Category</h2>";
 };
@@ -164,7 +178,7 @@ const addToLocalStorage = () => {
         priority: priorityValue,
         category: taskCategory,
         dueDate: dueDate,
-        isCompeted: false,
+        isCompleted: false,
         createdAt: new Date().toLocaleString(),
         updatedOn: null,
       };
@@ -193,9 +207,9 @@ const handleDelete = (id) => {
 const bindTaskData = (id) => {
   let taskList = JSON.parse(localStorage.getItem(LOCALSTORAGE.taskList)) || [];
   let filterTaskList = taskList.filter((task) => task.id === id);
-  const { name, description, category, dueDate, priority, isCompeted } =
+  const { name, description, category, dueDate, priority, isCompleted } =
     filterTaskList[0];
-  if (isCompeted) {
+  if (isCompleted) {
     alert("You can't edit completed task !");
     return;
   }
@@ -220,7 +234,9 @@ const renderTasks = () => {
           <div class="taskControl">
           <span class="taskHead">${task.name}</span>
           <div class="buttonGroup">
-            <button onClick="handleCompleted(${task.id});"><i class="fa-solid fa-check"></i></button>
+            <button onClick="handleCompleted(${
+              task.id
+            });"><i class="fa-solid fa-check"></i></button>
             <button onClick="bindTaskData(${task.id});">
               <i class="fa-regular fa-pen-to-square"></i>
             </button>
@@ -237,14 +253,15 @@ const renderTasks = () => {
         <span class="duedate">Due Date : ${task.dueDate}</span>
         <div class="timeStatus">
           <span>Added On : ${task.createdAt}</span>
-          <span>Update On : ${task.updatedOn}</span>
+          
+          <span>Update On : ${task.updatedOn ? task.updatedOn : "NA"}</span>
         </div>
     `;
     let taskDiv = document.createElement("div");
     taskDiv.setAttribute("class", "task");
     taskDiv.innerHTML = HTMLDATE;
 
-    task.isCompeted ? taskDiv.setAttribute("id", "completeTask") : "";
+    task.isCompleted ? taskDiv.setAttribute("id", "completeTask") : "";
     AllTasklist.appendChild(taskDiv);
   });
   AllTasklist.innerHTML = taskList.length
