@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="../css/register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p class="heading">Registration</p>
+      <form action="" id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <span id="name_error" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+        <span id="email_error" class="error"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <span id="password_error" class="error"></span>
+        <label for="conformPassword">Conform Password:</label>
+        <input
+          type="password"
+          name="conformPassword"
+          id="conformPassword"
+          placeholder="conform Password"
+        /><span id="ConformPassword_error" class="error"></span>
+        <label for="userType">User Type:</label>
+        <select id="userType" name="userType">
+          <option value="" selected disabled>Select Usertype</option>
+          <option value="patient">Patient</option>
+          <option value="doctor">Doctor</option>
+        </select>
+        <span id="userType_error" class="error"></span>
+
+        <input
+          type="submit"
+          value="Register"
+          id="RegisterButton"
+          class="button"
+        />
+      </form>
+    </div>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

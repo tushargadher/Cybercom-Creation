@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #0b67e9;
+}
+.heading {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+/*registration page style*/
+#registrationForm {
+  height: 80%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  padding: 50px 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px white;
+}
+#registrationForm input,
+#registrationForm select {
+  width: 100%;
+  height: 15%;
+  margin: 10px 0;
+  padding: 5px;
+}
+.button {
+  background-color: rgb(60, 60, 60);
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+.error {
+  color: red;
+}
+@media screen and (max-width: 1080px) {
+  #registrationForm {
+    width: 80%;
+  }
+}

@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+:root {
+  --Bgcolor: #0052c3;
+}
+.dashContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+.sideNav {
+  flex: 2;
+  height: 100vh;
+  background-color: var(--Bgcolor);
+  box-sizing: border-box;
+  padding: 20px;
+}
+.optionContainer {
+  margin-top: 20px;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.optionContainer a {
+  text-decoration: none;
+  color: white;
+}
+.mainBoard {
+  flex: 12;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+}
+.mainBoard > span,
+.BookingInfo > span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* margin: 1rem; */
+}
+.patientInfo {
+  margin-top: 20px;
+  border: 1px solid black;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.BookingInfo {
+}
