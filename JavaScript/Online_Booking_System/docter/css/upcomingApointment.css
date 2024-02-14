@@ -6,9 +6,38 @@ table {
 th,
 td {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
   text-align: left;
 }
 th {
-  background-color: #f2f2f2;
+  background-color: #383ef026;
+}
+table button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+table button:hover {
+  cursor: pointer;
+}
+table button:nth-child(1) {
+  background-color: #7cff7c;
+}
+table button:nth-child(2) {
+  background-color: #f56d6d;
+}
+table button:nth-child(3) {
+  background-color: #fb7746;
+}
+@media screen and (max-width: 1080px) {
+  th,
+  td {
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 500px) {
+  th,
+  td {
+    padding: 5px;
+  }
 }

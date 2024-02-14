@@ -10,14 +10,8 @@
     <div class="dashContainer">
       <div class="sideNav">
         <div class="optionContainer">
-          <a href="http://127.0.0.1:5500/patient/html/dashboard.html"
-            >Dashboard</a
-          >
-          <a
-            href="http://127.0.0.1:5500/patient/html/appointment.html"
-            id="usersLink"
-            >Schedule Appointments</a
-          >
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./appointment.html">Schedule Appointments</a>
           <a href="" id="logoutButton">Logout</a>
         </div>
       </div>
@@ -26,17 +20,23 @@
         <div class="patientInfo">
           <!-- dynamically adding patient info -->
         </div>
-        <div class="BookingInfo">
-          <span>Booked Apointment</span>
+
+        <span>Booked Apointment</span>
+        <div class="bookingContainer">
           <!-- dynamically adding Booking info -->
         </div>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+
     <script src="../js/dashboard.js"></script>
   </body>
 </html>
+<!-- {
+  "appointment_id": 1707829113211,
+  "patientName": "Deep Patel",
+  "patient_Id": 1707826746909,
+  "doctor": "Tushar Gadher",
+  "doctor_id": 1707826569341,
+  "date": "2024-02-13",
+  "timeSlot": "10:00 AM - 11:00 AM"
+}, -->

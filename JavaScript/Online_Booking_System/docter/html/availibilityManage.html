@@ -5,32 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DashBoard - Doctor</title>
     <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/availabilityManage.css" />
   </head>
   <body>
     <div class="dashContainer">
       <div class="sideNav">
         <div class="optionContainer">
-          <a href="http://127.0.0.1:5500/docter/html/dashboard.html"
-            >Dashboard</a
-          >
-          <a href="http://127.0.0.1:5500/docter/html/upcomingApportment.html"
-            >Upcoming appointments</a
-          >
-          <a href="http://127.0.0.1:5500/docter/html/availibilityManage.html"
-            >Availability Management</a
-          >
+          <a href="dashboard.html">Dashboard</a>
+          <a href="upcomingApportment.html">Upcoming appointments</a>
+          <a href="availibilityManage.html">Availability Management</a>
           <a href="" id="logoutButton">Logout</a>
         </div>
       </div>
       <div class="mainBoard">
         <span>Manage Availability</span>
+
+        <form id="availabilityForm">
+          <label>Select Time Slots </label>
+
+          <div>
+            <input
+              type="checkbox"
+              id="slot1"
+              name="timeSlot"
+              value="10:00 AM - 11:00 AM"
+            />
+            <label for="slot2">10:00 AM - 11:00 AM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot2"
+              name="timeSlot"
+              value="11:00 AM - 12:00 PM"
+            />
+            <label for="slot3">11:00 AM - 12:00 PM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot3"
+              name="timeSlot"
+              value="12:00 PM - 1:00 PM"
+            />
+            <label for="slot4">12:00 PM - 1:00 PM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot4"
+              name="timeSlot"
+              value="4:00 PM - 5:00 PM"
+            />
+            <label for="slot8">4:00 PM - 5:00 PM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot5"
+              name="timeSlot"
+              value="5:00 PM - 6:00 PM"
+            />
+            <label for="slot9">5:00 PM - 6:00 PM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot6"
+              name="timeSlot"
+              value="6:00 PM - 7:00 PM"
+            />
+            <label for="slot10">6:00 PM - 7:00 PM</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="slot7"
+              name="timeSlot"
+              value="7:00 PM - 8:00 PM"
+            />
+            <label for="slot11">7:00 PM - 8:00 PM</label>
+          </div>
+          <div>
+            <input type="submit" value="" id="availabilityButton" />
+          </div>
+        </form>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+
     <script src="../js/dashboard.js"></script>
+    <script src="../js/availability.js"></script>
   </body>
 </html>
+<!-- <label for="day">Select Date:</label> -->
+<!-- <select id="day" name="day">
+            <option value="">Select Day</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select> -->
+<!-- <input type="date" id="day" required /> -->

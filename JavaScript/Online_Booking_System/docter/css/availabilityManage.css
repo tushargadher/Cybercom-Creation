@@ -1,0 +1,37 @@
+#availabilityForm {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40%;
+  height: 60%;
+}
+/* #availabilityForm input,
+  #availabilityForm input[type="date"], */
+#availabilityForm select {
+  width: 100%;
+  margin: 10px 0;
+  height: 10%;
+}
+
+#availabilityForm input[type="submit"] {
+  width: max-content;
+  padding: 10px;
+}
+
+#bookButton:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 1080px) {
+  #availabilityForm {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #availabilityForm {
+    width: 100%;
+    padding: 10px;
+  }
+}

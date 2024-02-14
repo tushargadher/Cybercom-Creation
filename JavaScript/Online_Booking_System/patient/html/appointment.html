@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Schedule Appointment</title>
     <link rel="stylesheet" href="../css/dashboard.css" />
-    <link rel="stylesheet" href="../css/apportment.css" />
+    <link rel="stylesheet" href="../css/apointment.css" />
   </head>
   <body>
     <div class="dashContainer">
       <div class="sideNav">
         <div class="optionContainer">
-          <a href="http://127.0.0.1:5500/patient/html/dashboard.html"
-            >Dashboard</a
-          >
-          <a
-            href="http://127.0.0.1:5500/patient/html/appointment.html"
-            id="usersLink"
-            >Schedule Appointments</a
-          >
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./appointment.html">Schedule Appointments</a>
           <a href="" id="logoutButton">Logout</a>
         </div>
       </div>
@@ -40,21 +34,15 @@
           <label for="timeSlot">Time Slot:</label>
           <select id="timeSlot" name="timeSlot" required>
             <option value="">Select Time Slot</option>
-            <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-            <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-            <!-- Add more time slots as needed -->
+          
+            <!-- Adding doctors timeslots dynamically -->
           </select>
 
           <input type="submit" value="Book Appointment" id="bookButton" />
         </form>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+
     <script src="../js/dashboard.js"></script>
     <script src="../js/appointment.js"></script>
   </body>

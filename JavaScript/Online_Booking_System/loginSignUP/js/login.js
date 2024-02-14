@@ -1,5 +1,5 @@
 document.getElementById("RegisterNowButton").addEventListener("click", () => {
-  window.location.href = "http://127.0.0.1:5500/comman/html/register.html";
+  window.location.href = "register.html";
 });
 
 let loginForm = document.getElementById("loginForm");
@@ -54,7 +54,7 @@ const formValidation = () => {
 
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  let inputEmail = emailInput.value.trim();
+  let inputEmail = emailInput.value.trim().toLowerCase();
   let inputPassword = passwordInput.value;
   let userType = userTypeSelect.value;
   let fromValidate = formValidation();
@@ -79,8 +79,9 @@ loginForm.addEventListener("submit", (e) => {
           SESSIONSTORAGE.loggedUser,
           JSON.stringify(loggedUser)
         );
-        window.location.href =
-          "http://127.0.0.1:5500/docter/html/dashboard.html";
+        window.location.href = "/docter/html/dashboard.html";
+      } else {
+        alert("Please check your login credentials");
       }
     } else {
       alert("Doctor Not Found");
@@ -103,8 +104,9 @@ loginForm.addEventListener("submit", (e) => {
           SESSIONSTORAGE.loggedUser,
           JSON.stringify(loggedUser)
         );
-        window.location.href =
-          "http://127.0.0.1:5500/patient/html/dashboard.html";
+        window.location.href = "/patient/html/dashboard.html";
+      } else {
+        alert("Please check your login credentials");
       }
     } else {
       alert("Patient Not Found");

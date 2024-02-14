@@ -6,6 +6,9 @@
 :root {
   --Bgcolor: #0052c3;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 .dashContainer {
   display: flex;
   flex-direction: row;
@@ -45,15 +48,52 @@
   font-weight: bold;
   /* margin: 1rem; */
 }
-.patientInfo {
+.patientInfo,
+.bookingDeatails {
   margin-top: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 20vh;
+  width: 40vw;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 10px;
   margin-bottom: 10px;
+  background-color: #0004ff0f;
+  margin: 10px;
 }
-.BookingInfo {
+.bookingContainer {
+  /* border:1px solid black; */
+  height: 65vh;
+
+  overflow-y: scroll;
+}
+/* .bookingContainer > span {
+  margin-top: 20px;
+} */
+.bookingDeatails {
+  background-color: #ff585800;
+  box-shadow: 0 0 10px #c4bfbf;
+  height: 25vh;
+  margin: 20px 10px;
+}
+.bookingDeatails b {
+  font-weight: 100;
+  opacity: 0.9;
+}
+.bookingDeatails span {
+  font-weight: 500;
+}
+@media screen and (max-width: 1080px) {
+  .patientInfo,
+  .bookingDeatails {
+    width: 60vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .patientInfo,
+  .bookingDeatails {
+    font-size: 0.8rem;
+  }
 }

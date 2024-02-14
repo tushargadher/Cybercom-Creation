@@ -69,13 +69,13 @@ const formValidation = () => {
 registerForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let name = nameInput.value.trim();
-  let email = emailInput.value.trim();
+  let email = emailInput.value.trim().toLowerCase();
   let password = passwordInput.value;
   let confirmPassword = confirmPasswordInput.value;
   let userType = userTypeSelect.value;
 
   let fromValidate = formValidation();
-  console.log(fromValidate);
+//   console.log(fromValidate);
   if (fromValidate) return;
 
   let patientList =
@@ -88,14 +88,14 @@ registerForm.addEventListener("submit", (e) => {
   const filterUser = allUser.filter((user) => user.email === email);
   if (filterUser.length) {
     alert("User Already Register...,Please Login");
-    window.location.href = "http://127.0.0.1:5500/comman/html/login.html";
+    window.location.href = "login.html";
     return;
   }
   const userId = Date.now();
   const userInfo = {
     id: userId,
     name,
-    email,
+    email: email.toLowerCase(),
     password,
     userType,
   };
@@ -109,6 +109,6 @@ registerForm.addEventListener("submit", (e) => {
   }
 
   alert("Registration Successfully");
-  window.location.href = "http://127.0.0.1:5500/comman/html/login.html";
+  window.location.href = "login.html";
   registerForm.reset();
 });

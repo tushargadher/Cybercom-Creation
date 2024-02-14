@@ -24,3 +24,13 @@
 #bookButton:hover {
   cursor: pointer;
 }
+@media screen and (max-width: 1080px) {
+  #appointmentForm {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 500px) {
+  #appointmentForm {
+    width: 90%;
+  }
+}
