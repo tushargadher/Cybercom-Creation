@@ -24,7 +24,6 @@
 }
 table {
   width: 100%;
-  
 }
 caption {
   font-size: 2rem;
@@ -42,7 +41,7 @@ td {
   /* border: 1px solid gray ; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 button {
   padding: 10px 15px;

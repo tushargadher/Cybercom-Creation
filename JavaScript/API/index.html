@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      img {
+        height: 150px;
+        width: 150px;
+      }
+      .card {
+        width: 12vw;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Using XML</h3>
+    <button onclick="XMLGetMethod()">GET METHOD</button>
+    <button onclick="XMLPostMethod()">POST METHOD</button>
+    <button onclick="XMLPutMethod()">PUT METHOD</button>
+    <button onclick="XMLDeleteMethod()">DELETE METHOD</button>
+    <h3>Using Fetch</h3>
+    <button onclick="fetchGet()">GET METHOD</button>
+    <button onclick="fetchPost()">POST METHOD</button>
+    <button onclick="fetchPUT()">PUT METHOD</button>
+    <button onclick="fetchDelete()">DELETE METHOD</button>
+
+    <div class="cotainer p-5 d-flex border justify-content-sm-evenly"></div>
+
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
