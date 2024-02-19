@@ -11,8 +11,6 @@ const loginUser = JSON.parse(sessionStorage.getItem(SESSIONSTORAGE.loggedUser));
 let logoutButton = document.getElementById("logoutButton");
 const container = document.querySelector(".patientInfo");
 
-// console.log(loginUser);
-
 if (!loginUser) {
   alert("Please login to access portal");
   window.location.href = "/loginSignUP/html/login.html";
@@ -34,9 +32,6 @@ const displayPatientInfo = () => {
     <span><b>Patient Email</b>:${loggedUser.email}</span>`;
   container.innerHTML = HTMLDATA;
 };
-if (container) {
-  displayPatientInfo();
-}
 
 //render patients booked appointments
 const renderBooking = () => {
@@ -48,8 +43,11 @@ const renderBooking = () => {
   const filterBooking = bookedAppoints.filter((appointment) => {
     return appointment.patient_Id === loginUser.id;
   });
-  //   console.log(filterBooking.length);
-
+  filterBooking.sort((a, b) => {
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
+    return dateA - dateB;
+  });
   filterBooking.forEach((appointment) => {
     let div = document.createElement("div");
     div.setAttribute("class", "bookingDeatails");
@@ -75,4 +73,8 @@ const renderBooking = () => {
     : "<span>No Apointment is Booked Yet !";
 };
 
+//function call
+if (container) {
+  displayPatientInfo();
+}
 renderBooking();
