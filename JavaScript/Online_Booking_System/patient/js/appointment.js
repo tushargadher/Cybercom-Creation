@@ -5,6 +5,12 @@ const appointmentId = parseInt(urlParams.get("apointmentId"));
 let bookButton = document.getElementById("bookButton");
 
 const bindFormData = (appointmentId) => {
+  let inputName = document.getElementById("patientName");
+  let selectDoctor = document.getElementById("selectDoctor");
+  let inputDate = document.getElementById("date");
+  inputName.disabled = true;
+  selectDoctor.disabled = true;
+
   bookButton.value = "Reschedule";
   const bookedAppoints =
     JSON.parse(localStorage.getItem(LOCALSTORAGE.BookedAppointments)) || [];
@@ -12,9 +18,10 @@ const bindFormData = (appointmentId) => {
     (appointment) => appointment.appointment_id === appointmentId
   );
   const { patientName, doctor, date } = filterData[0];
-  document.getElementById("patientName").value = patientName;
-  document.getElementById("selectDoctor").value = doctor;
-  document.getElementById("date").value = date;
+  inputName.value = patientName;
+  selectDoctor.value = doctor;
+  inputDate.value = date;
+  renderTimeslots();
 };
 
 //render doctor for booking apportment
@@ -100,6 +107,9 @@ appointmentForm.addEventListener("submit", (e) => {
       LOCALSTORAGE.BookedAppointments,
       JSON.stringify(bookedAppoints)
     );
+    alert(
+      "Your Appointment is Rescheduled! you can see appointment status into dashboard"
+    );
   } else {
     let appointment = {
       appointment_id: Date.now(),
@@ -117,11 +127,11 @@ appointmentForm.addEventListener("submit", (e) => {
       LOCALSTORAGE.BookedAppointments,
       JSON.stringify(bookedAppoints)
     );
+    alert(
+      "Your Appointment is Booked! you can see appointment status into dashboard"
+    );
   }
 
-  alert(
-    "Your Appointment is Booked! you can see appointment status into dashboard"
-  );
   appointmentForm.reset();
   window.location.href = "/patient/html/dashboard.html";
 });
