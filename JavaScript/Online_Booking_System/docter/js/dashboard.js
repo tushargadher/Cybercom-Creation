@@ -22,6 +22,20 @@ logoutButton.addEventListener("click", () => {
   }
 });
 
+const handleDelete = (id) => {
+  console.log(id);
+  const bookedAppoints =
+    JSON.parse(localStorage.getItem(LOCALSTORAGE.BookedAppointments)) || [];
+  const filterBooking = bookedAppoints.filter(
+    (item) => item.appointment_id !== id
+  );
+  localStorage.setItem(
+    LOCALSTORAGE.BookedAppointments,
+    JSON.stringify(filterBooking)
+  );
+  rednerAccepted();
+};
+
 const rednerAccepted = () => {
   const tbody = document.getElementsByTagName("tbody")[0];
   tbody.innerHTML = "";
@@ -33,7 +47,7 @@ const rednerAccepted = () => {
       appointment.doctorRemark == "Appoinment Accpeted"
     );
   });
-//   console.log(filterBooking);
+  //   console.log(filterBooking);
   if (!filterBooking.length) {
     document.getElementsByTagName("table")[0].innerHTML =
       "<span>No Appointment Yet</span>";
@@ -46,20 +60,10 @@ const rednerAccepted = () => {
       <td>${booking.doctor}</td>
       <td>${booking.date}</td>
       <td>${booking.timeSlot}</td>
-  
+  <td><button onClick="handleDelete(${booking.appointment_id})">Complete</button></td>
       `;
     row.innerHTML = htmlData;
     tbody.appendChild(row);
   });
 };
 rednerAccepted();
-// {
-//     "appointment_id": 1707892717218,
-//     "patientName": "Fenil",
-//     "patient_Id": 1707892674067,
-//     "doctor": "Tushar Gadher",
-//     "doctor_id": 1707892481083,
-//     "date": "2024-02-15",
-//     "timeSlot": "10:00 AM - 11:00 AM",
-//     "doctorRemark": "Not Reviewed"
-//   },
