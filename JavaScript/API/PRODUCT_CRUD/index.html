@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <div class="container">
+    <!-- search container -->
+    <div class="searchBar">
+      <input
+        type="text"
+        placeholder="Search Product"
+        id="productInput"
+        autocomplete="off"
+      />
+      <button id="searchButton">Search</button>
+      <div class="overlay" id="overlay">
+        <div class="popup">
+          <p>Please wait...</p>
+        </div>
+      </div>
+      <div class="filterContainer">
+        <label for="PriceSort">Price</label>
+        <select
+          name="PriceSort"
+          id="PriceSort"
+          onchange="handlePriceSort(this.value)"
+        >
+          <option value="" disabled selected>Select</option>
+          <option value="ascending">Low to High</option>
+          <option value="descending">High to Low</option>
+        </select>
+        <label for="RatingSort">Rating </label>
+        <select
+          name="RatingSort"
+          id="RatingSort"
+          onchange="handleRatingSort(this.value)"
+        >
+          <option value="" disabled selected>Select</option>
+          <option value="ascending">Low to High</option>
+          <option value="descending">High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- product container -->
+    <div class="productContainer">
+      <div class="subContainer">
+        <!-- loader -->
+        <div class="loader">
+          <img src="./assets/loader.gif" alt="" />
+        </div>
+        <div class="productList">
+          <!-- dynamically adding product -->
+        </div>
+        <div class="pagination">
+          <button onclick="handlePrevious()">&larr;</button>
+          <!-- <span>page 1</span> -->
+          <button onclick="handleNext()">&rarr;</button>
+        </div>
+      </div>
+      <div class="addProductcontainer">
+        <span>ADD PRODUCT</span>
+        <form id="addProductForm">
+          <div>
+            <label for="title">Title:</label><br />
+            <input type="text" id="title" name="title" required /><br />
+          </div>
+          <div>
+            <label for="description">Description:</label><br />
+            <textarea id="description" name="description" required></textarea
+            ><br />
+          </div>
+          <div>
+            <label for="price">Price:</label><br />
+            <input
+              type="number"
+              id="price"
+              name="price"
+              min="0"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="discountPercentage">Discount Percentage:</label><br />
+            <input
+              type="number"
+              id="discountPercentage"
+              name="discountPercentage"
+              min="0"
+              max="100"
+            /><br />
+          </div>
+          <div>
+            <label for="rating">Rating:</label><br />
+            <input type="number" id="rating" name="rating" required /><br />
+          </div>
+          <div>
+            <label for="stock">Stock:</label><br />
+            <input
+              type="number"
+              id="stock"
+              name="stock"
+              min="0"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="brand">Brand:</label><br />
+            <input type="text" id="brand" name="brand" required /><br />
+          </div>
+          <div>
+            <label for="category">Category:</label><br />
+            <input type="text" id="category" name="category" required /><br />
+          </div>
+          <div>
+            <label for="thumbnail">Thumbnail URL:</label><br />
+            <input type="url" id="thumbnail" name="thumbnail" required /><br />
+          </div>
+          <div>
+            <button type="submit" id="submitButton">Add Product </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="./js/apiFunctions.js"></script>
+  <script src="./js/script.js"></script>
+  <body></body>
+</html>
