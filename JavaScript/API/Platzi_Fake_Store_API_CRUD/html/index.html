@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Store</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="sort-container">
+        <select
+          name="sortProduct"
+          id="sortProduct"
+          onchange="handleSort(this.value)"
+        >
+          <option value="" selected disabled>Sort Product</option>
+          <option value="AtoZ">A-Z</option>
+          <option value="ZtoA">Z-A</option>
+        </select>
+
+        <select
+          name="filterCategory"
+          id="filterCategory"
+          onchange="categoryFilter(this.value)"
+        >
+          <option value="" selected disabled>Select Category</option>
+        </select>
+      </div>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search product..."
+          name="search"
+          oninput="handleSearch(this.value)"
+        />
+      </div>
+      <div class="link-container">
+        <!-- <a href="./index.html">Products</a> -->
+        <a href="./addProduct.html">Add Product</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="productList">
+        <div class="loader">
+          <img src="../assets/loader.gif" alt="" />
+        </div>
+      </div>
+      <div class="pagination">
+        <button onclick="handlePrevious()">Previous</button>
+        <!-- <span>page 1</span> -->
+        <button onclick="handleNext()" id="nextButton">Next</button>
+      </div>
+    </div>
+
+    <script src="../js/apiFunctions.js"></script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
