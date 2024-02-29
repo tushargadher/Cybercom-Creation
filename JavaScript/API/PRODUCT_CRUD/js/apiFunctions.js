@@ -158,6 +158,13 @@ const updateProduct = (id, formData) => {
       if (respone.status === 200) {
         return respone.json();
       } else if (respone.status === 404) {
+        let newProducts =
+          JSON.parse(localStorage.getItem(LOCALSTORAGE.newProducts)) || [];
+        let productIndedx = newProducts.findIndex(
+          (product) => product.id === id
+        );
+        console.log(productIndedx);
+        throw new Error("Product Not Found");
       } else {
         throw new Error("Faild to update Product");
       }
@@ -175,7 +182,7 @@ const updateProduct = (id, formData) => {
         JSON.stringify(updatedProducts)
       );
       submitButton.innerText = "Add Product";
-      alert(`Product ${respone.title} has been Updated`);
+      alert(`Product has been Updated`);
       getAllProduct();
       addProductForm.reset();
     })

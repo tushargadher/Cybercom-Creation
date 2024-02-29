@@ -12,9 +12,7 @@ let skip = 0;
 let limit = 0;
 let totalSize = 0;
 let currentProducts = [];
-document.addEventListener("DOMContentLoaded", () => {
-  getAllProduct();
-});
+document.addEventListener("DOMContentLoaded", getAllProduct);
 let LOCALSTORAGE = {
   newProducts: "newProducts",
   deletedProducts: "deletedProductIds",

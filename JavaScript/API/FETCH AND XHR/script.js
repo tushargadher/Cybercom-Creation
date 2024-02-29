@@ -104,6 +104,23 @@ const XMLDeleteMethod = () => {
   xhr.send();
 };
 
+const test = () => {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "url", true);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 204) {
+      if (xhr.respone) {
+        console.log(JSON.parse(xhr.response));
+      }
+    }
+  };
+  xhr.send({
+    name: "Tushar",
+    job: "Javascript",
+  });
+};
+
 const fetchGet = () => {
   fetch("https://reqres.in/api/users?page=2")
     .then((response) => response.json())
@@ -123,7 +140,15 @@ const fetchPost = () => {
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
 };
-
+const postFetch=()=>{
+  fetch("https://reqres.in/api/users",{
+    method:"POST",
+    body:{
+      name:"Tushar",
+      job:""
+    }
+  })
+}
 const fetchPUT = () => {
   fetch("https://reqres.in/api/users/2", {
     method: "PUT",
@@ -151,3 +176,20 @@ const fetchDelete = () => {
 // 3xx redirection – further action needs to be taken in order to complete the request
 // 4xx client error – the request contains bad syntax or cannot be fulfilled
 // 5xx server error – the server failed to fulfil an apparently valid request
+
+// const addToyForm = document.querySelector('.add-toy-form')
+// addToyForm.addEventListener('submit', function (event) {
+//   fetch(`http://localhost:3000/toys/`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       name: `${event.target.name.value}`,
+//       image: `${event.target.image.value}`,
+//       likes: 0
+//     })
+//   })
+//     .then(resp => resp.json())
+//     .then(renderToys)
+// })
