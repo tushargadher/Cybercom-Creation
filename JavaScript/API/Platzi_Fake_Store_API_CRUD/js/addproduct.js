@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", getProduct);
 let urlParams = new URLSearchParams(window.location.search);
 let productId = urlParams.get("product_id");
-let addProductForm = document.getElementById("addProductForm");
+let ProductForm = document.getElementById("addProductForm");
 let submitButton = document.getElementById("submitBtn");
 
 if (productId) {
@@ -21,7 +21,7 @@ const renderCategory = (data, containerId) => {
   });
 };
 
-addProductForm.addEventListener("submit", (e) => {
+ProductForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let title = document.getElementById("title").value;
   let price = document.getElementById("price").value;
@@ -38,9 +38,10 @@ addProductForm.addEventListener("submit", (e) => {
     categoryId: categoryId,
     images: images.split(",").map((url) => url.trim()),
   };
+
   if (productId) {
     handleUpdate(formObj, productId);
   } else {
-    addProduct(formObj);
+    addProducts(formObj);
   }
 });

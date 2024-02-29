@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", getProduct);
 document.addEventListener("DOMContentLoaded", getAllCategory);
-document.addEventListener("DOMContentLoaded", getAllProduct);
-let allProduct = [];
 let loader = document.querySelector(".loader");
+let priceValueOp = document.getElementById("priceValue");
+let priceRange = document.getElementById("priceRange");
 let nextButton = document.getElementById("nextButton");
 const showLoader = () => {
   loader.classList.remove("hide");
@@ -47,13 +47,16 @@ const renderProduct = (data) => {
   }
 
   data.map((product) => {
+    // console.log(product.images[0]);
+    const cleanedUrl = product.images[0].replace(/[\[\]"]/g, "");
+    console.log(cleanedUrl);
     let div = document.createElement("div");
     div.setAttribute("class", "product-card");
     const HTMLDATA = `
           <div class="product-img">
     
               <img
-                src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+                src=${cleanedUrl}
                 alt="Product Image"
               />
               </div>
@@ -74,17 +77,4 @@ const renderProduct = (data) => {
     container.appendChild(div);
   });
   //   }
-};
-
-const handleSearch = (searchValue) => {
-  let inputValue = searchValue.toLowerCase();
-  if (allProduct && allProduct.length > 0 && inputValue) {
-    const filterProduct = allProduct.filter((product) =>
-      product.title.toLowerCase().includes(inputValue)
-    );
-    renderProduct(filterProduct);
-    console.log(filterProduct);
-  } else {
-    getProduct();
-  }
 };

@@ -9,6 +9,33 @@
 :root {
   --height: 4vh;
 }
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 9999; /* Ensure it appears on top of other elements */
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup p {
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
 a {
   text-decoration: none;
   color: white;
@@ -38,7 +65,7 @@ nav {
   display: flex;
   justify-content: space-between;
   /* border: 1px solid white; */
-  width: 40%;
+  width: 35%;
   height: var(--height);
 }
 .sort-container {
@@ -59,13 +86,37 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 20%;
+  width: 10%;
   height: var(--height);
 }
 .link-container:hover {
   cursor: pointer;
   background-color: rgb(28, 28, 28);
 }
+.price-range-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* border: 1px solid white; */
+  height: var(--height);
+  color: white;
+  width: 25%;
+}
+
+input[type="range"] {
+  /* -webkit-appearance: none; */
+  width: 50%;
+  background: #d3d3d3;
+  border-radius: 5px;
+  outline: none;
+}
+
+output {
+  display: block;
+  font-size: 16px;
+  color: white;
+}
+
 /* add product page */
 .addlink-container {
   display: flex;

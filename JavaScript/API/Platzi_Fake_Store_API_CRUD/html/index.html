@@ -35,6 +35,19 @@
           oninput="handleSearch(this.value)"
         />
       </div>
+      <div class="price-range-container">
+        <label for="priceRange">Price Range:</label>
+        <input
+          type="range"
+          id="priceRange"
+          name="priceRange"
+          min="20"
+          max="200"
+          value="0"
+          onchange="handlePriceRange(this.value)"
+        />
+        <output for="priceRange" id="priceValue">0</output>
+      </div>
       <div class="link-container">
         <!-- <a href="./index.html">Products</a> -->
         <a href="./addProduct.html">Add Product</a>
