@@ -58,9 +58,9 @@ const renderProduct = (data) => {
               />
               </div>
               <div class="product-info">
-                <h2>${product.title}</h2>
+                <h3>${product.title}</h3>
                 <p><strong>Price:</strong> $${product.price}</p>
-                <p>
+                <p id="productDescription">
                   <strong>Description:</strong> ${product.description}
                 </p>
                 <p><strong>Category:</strong> ${product.category.name}</p>
