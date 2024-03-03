@@ -10,11 +10,26 @@
     <nav>
       <div class="sort-container">
         <select
+          name="pageSize"
+          id="pageSize"
+          onchange="handlePageSize(this.value)"
+        >
+          <option value="" selected disabled>Page Size</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="">
+            Store page size in localstorage so we can maintain page size
+          </option>
+          <option value="">perform pagination when user serach product</option>
+        </select>
+        <select
           name="sortProduct"
           id="sortProduct"
           onchange="handleSort(this.value)"
         >
-          <option value="" selected disabled>Sort Product</option>
+          <option value="" selected disabled>Sort</option>
           <option value="AtoZ">A-Z</option>
           <option value="ZtoA">Z-A</option>
         </select>
@@ -24,7 +39,7 @@
           id="filterCategory"
           onchange="categoryFilter(this.value)"
         >
-          <option value="" selected disabled>Select Category</option>
+          <option value="" selected disabled>Category</option>
         </select>
       </div>
       <div class="search-container">
@@ -60,7 +75,7 @@
         </div>
       </div>
       <div class="pagination">
-        <button onclick="handlePrevious()">Previous</button>
+        <button onclick="handlePrevious()" id="previousButton">Previous</button>
         <!-- <span>page 1</span> -->
         <button onclick="handleNext()" id="nextButton">Next</button>
       </div>

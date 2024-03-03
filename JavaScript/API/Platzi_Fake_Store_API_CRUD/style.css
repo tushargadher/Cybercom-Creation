@@ -73,7 +73,7 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 20%;
+  width: 22%;
   height: var(--height);
 }
 .sort-container select {

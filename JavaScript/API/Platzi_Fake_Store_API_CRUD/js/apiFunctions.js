@@ -3,6 +3,19 @@ let categoriesDropDown = document.getElementById("categoryId");
 let offset = 0;
 let limit = 10;
 let currentProduct = [];
+const handlePageSize = (selectedValue) => {
+  //if we dont convert string value into number then it will create problem in pagination
+  limit = parseInt(selectedValue);
+  getProduct();
+};
+const showLoader = () => {
+  loader.classList.remove("hide");
+  loader.classList.add("show");
+};
+const hideLoader = () => {
+  loader.classList.remove("show");
+  loader.classList.add("hide");
+};
 const showPopUpLoader = () => {
   overlay.classList.remove("hide");
   overlay.classList.add("show");
@@ -15,20 +28,24 @@ const handlePrevious = () => {
   nextButton.disabled = false;
   nextButton.style.opacity = 1;
   if (!offset) {
-    alert("You are on first page");
+    // alert("You are on first page");
+    previousButton.style.opacity = "0.5";
+    previousButton.disabled = true;
     return;
   }
   offset = offset - limit;
   getProduct();
 };
 const handleNext = () => {
+  previousButton.style.opacity = "1";
+  previousButton.disabled = false;
   offset = offset + limit;
   getProduct();
 };
 
 const getProduct = () => {
   showLoader();
-  //   console.log(`${API}?offset=${offset}&limit=${limit}`);
+  console.log(`${API}?offset=${offset}&limit=${limit}`);
   fetch(`${API}?offset=${offset}&limit=${limit}`)
     .then((response) => {
       if (!response.ok) {
@@ -40,8 +57,9 @@ const getProduct = () => {
       hideLoader();
       currentProduct = [...response];
       renderProduct(response);
+      console.log(response.length);
       if (response.length < limit) {
-        alert("You have reached last page");
+        // alert("You have reached last page");
         nextButton.disabled = true;
         nextButton.style.opacity = 0.5;
       }
@@ -76,7 +94,10 @@ const addProducts = (dataObj) => {
         window.location.href = "http://127.0.0.1:5500/html/index.html";
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      hidePopUpLoader();
+      console.log(error);
+    });
 };
 
 const getSignalProduct = (id) => {
@@ -91,11 +112,12 @@ const getSignalProduct = (id) => {
     .then((response) => {
       hidePopUpLoader();
       console.log(response);
+      cleandsImgUrls = response.images[0].replace(/[\[\]"]/g, "");
       document.getElementById("title").value = response.title;
       document.getElementById("price").value = response.price;
       document.getElementById("description").value = response.description;
       document.getElementById("categoryId").value = response.category.id;
-      document.getElementById("images").value = response.images;
+      document.getElementById("images").value = cleandsImgUrls;
     })
     .catch((error) => {
       hidePopUpLoader();
