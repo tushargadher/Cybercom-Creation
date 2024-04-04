@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { WishlistService } from 'src/app/Services/wishlist.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,7 +26,7 @@ export class HomeComponent {
     private productService: ProductService,
     private cartService: CartService,
     private wishlistService: WishlistService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
 
   ngOnInit() {
@@ -47,7 +47,11 @@ export class HomeComponent {
       },
       error: (error: any) => {
         console.log(error);
-        this.toastr.error(error.error.error.message);
+        this.toast.error({
+          detail: 'ERROR',
+          summary: error.error.error.message,
+          sticky: true,
+        });
       },
     });
   }
@@ -79,14 +83,15 @@ export class HomeComponent {
       next: (res: any) => {
         this.isloading[index] = false;
         // console.log(res);
-        this.toastr.success('Item added to cart', undefined, {
-          positionClass: 'toast-bottom-right',
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'Item added to cart',
         });
       },
       error: (error: any) => {
         this.isloading[index] = false;
         console.log(error);
-        this.toastr.error(error.error.error.message);
+        this.toast.error(error.error.error.message);
       },
     });
   }
@@ -109,8 +114,9 @@ export class HomeComponent {
         },
       });
     } else {
-      this.toastr.info('Search canceled', undefined, {
-        positionClass: 'toast-bottom-right',
+      this.toast.info({
+        detail: 'INFO',
+        summary: 'Search cancelled',
       });
       this.getProducts(1);
       this.showPagination = true;
@@ -122,8 +128,9 @@ export class HomeComponent {
     if (selectedCategoryId) {
       this.handleFilterChange(selectedCategoryId);
     } else {
-      this.toastr.info('Filter Disabled', undefined, {
-        positionClass: 'toast-bottom-right',
+      this.toast.info({
+        detail: 'INFO',
+        summary: 'Filter Disabled',
       });
       this.getProducts(1);
     }
@@ -137,7 +144,7 @@ export class HomeComponent {
       },
       error: (error: any) => {
         console.log(error);
-        this.toastr.error(error.error.error.message);
+        this.toast.error(error.error.error.message);
       },
     });
   }
@@ -148,7 +155,7 @@ export class HomeComponent {
       },
       error: (error: any) => {
         console.log(error);
-        this.toastr.error(error.error.error.message);
+        this.toast.error(error.error.error.message);
       },
     });
   }
@@ -177,14 +184,15 @@ export class HomeComponent {
         this.iswishlistloading[index] = false;
         console.log(res);
 
-        this.toastr.success('Item added to wishlist', undefined, {
-          positionClass: 'toast-bottom-right',
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'Item added to wishlist',
         });
       },
       error: (error: any) => {
         this.iswishlistloading[index] = false;
         console.log(error);
-        this.toastr.error(error.error.error.message);
+        this.toast.error(error.error.error.message);
       },
     });
   }

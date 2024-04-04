@@ -19,8 +19,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InterceptorInterceptor } from './Services/interceptor/interceptor.interceptor';
 import { MyOrderComponent } from './Components/my-order/my-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgToastModule } from 'ng-angular-popup';
 
-import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
     MyOrderComponent,
   ],
   imports: [
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    NgToastModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

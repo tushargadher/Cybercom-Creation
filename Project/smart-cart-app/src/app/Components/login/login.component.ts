@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
 
   get email() {
@@ -46,13 +46,21 @@ export class LoginComponent {
         this.isloading = false;
         sessionStorage.setItem('token', JSON.stringify(res.jwt));
         sessionStorage.setItem('user_id', JSON.stringify(res.user.id));
-        this.toastr.success('Login Successfully');
+
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'Login Successfully',
+        });
         this.router.navigate(['/home']);
       },
       error: (error: any) => {
         console.log(error);
         this.isloading = false;
-        this.toastr.error(error.error.error.message);
+        this.toast.error({
+          detail: 'ERROR',
+          summary: error.error.error.message,
+          sticky: true,
+        });
       },
     });
   }

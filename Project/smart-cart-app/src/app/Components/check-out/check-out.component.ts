@@ -3,7 +3,7 @@ import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 import { OrderService } from 'src/app/Services/order.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
@@ -38,7 +38,7 @@ export class CheckOutComponent {
     private userService: UserService,
     private orderService: OrderService,
     private router: Router,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
   getCardProducts() {
     this.cartService.getCart(this.userID).subscribe({
@@ -92,14 +92,11 @@ export class CheckOutComponent {
 
   placeOrder() {
     if (this.userData.user_addresses.length === 0) {
-      this.toastr.error(
-        '<h6>Please add remaining details before placing the order.</h6>',
-        undefined,
-        {
-          positionClass: 'toast-top-right',
-          enableHtml: true,
-        }
-      );
+      this.toast.error({
+        detail: 'ERROR',
+        summary: 'Please add remaining details before placing the order',
+        sticky: true,
+      });
     } else {
       //placing Order
       this.isloading = true;
@@ -121,13 +118,10 @@ export class CheckOutComponent {
         next: (res: any) => {
           this.isloading = false;
           // console.log(res);
-          this.toastr.success(
-            '<h6>Thank You...Your order is Confirmed!</h6>',
-            undefined,
-            {
-              enableHtml: true,
-            }
-          );
+          this.toast.success({
+            detail: 'SUCCESS',
+            summary: 'Thank You...Your order is Confirmed!',
+          });
           this.router.navigate([`/order-track/${res.data.id}`]);
         },
         error: (error: any) => {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -29,7 +29,7 @@ export class ProfileComponent {
   }
   constructor(
     private userService: UserService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
   ngOnInit(): void {
     this.getUserData();
@@ -80,7 +80,7 @@ export class ProfileComponent {
 
     this.userService.addUserAddress(formData).subscribe({
       next: (res: any) => {
-        console.log(res);
+        // console.log(res);
       },
       error: (error: any) => {
         console.log(error);
@@ -92,8 +92,9 @@ export class ProfileComponent {
       next: (res: any) => {
         console.log(res);
         this.isloading = false;
-        this.toastr.success('User Details Added...', undefined, {
-          positionClass: 'toast-bottom-right',
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'User Details Saved.',
         });
         this.getUserData();
       },

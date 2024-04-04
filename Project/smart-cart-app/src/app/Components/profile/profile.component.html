@@ -81,13 +81,13 @@
               userData.user_addresses && userData.user_addresses.length > 0
             "
             value="{{
-              userData.user_addresses[0].address_line_1 +
+              userData?.user_addresses[0]?.address_line_1 +
                 ' ' +
-                userData.user_addresses[0].landmark +
+                userData?.user_addresses[0]?.landmark +
                 ' ' +
-                userData.user_addresses[0].city.name +
+                userData?.user_addresses[0]?.city?.name +
                 ' ' +
-                userData.user_addresses[0].city.pincode
+                userData?.user_addresses[0]?.city?.pincode
             }}"
             disabled
           ></textarea>

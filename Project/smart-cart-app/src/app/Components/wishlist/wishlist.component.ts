@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WishlistService } from 'src/app/Services/wishlist.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
@@ -16,7 +16,7 @@ export class WishlistComponent {
   }
   constructor(
     private wishlistService: WishlistService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
   getWishlistProduct() {
     this.wishlistService.getWishlist(this.userID).subscribe({
@@ -35,7 +35,11 @@ export class WishlistComponent {
       this.wishlistService.removeWishListItem(id).subscribe({
         next: (res: any) => {
           console.log(res);
-          this.toastr.success('Item Removed From Wishlist');
+
+          this.toast.success({
+            detail: 'SUCCESS',
+            summary: 'Item Removed From Wishlist',
+          });
           this.getWishlistProduct();
         },
         error: (error: any) => {

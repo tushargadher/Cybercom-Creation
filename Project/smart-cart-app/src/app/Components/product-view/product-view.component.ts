@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { CartService } from 'src/app/Services/cart.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
@@ -17,7 +17,7 @@ export class ProductViewComponent {
     private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
   ngOnInit(): void {
     //get the product id from url
@@ -59,9 +59,11 @@ export class ProductViewComponent {
     this.cartService.addTocart(productData).subscribe({
       next: (res: any) => {
         this.isloading = false;
-        console.log(res);
-        alert('');
-        this.toastr.success('Item added to cart');
+        // console.log(res);
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'Added to cart',
+        });
       },
       error: (error: any) => {
         this.isloading = false;

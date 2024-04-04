@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/Services/cart.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -23,7 +23,7 @@ export class CartComponent {
   };
   constructor(
     private cartService: CartService,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
   ngOnInit() {
     this.userID = JSON.parse(sessionStorage.getItem('user_id')!);
@@ -48,9 +48,11 @@ export class CartComponent {
     if (confirm('Remove Item From Cart?')) {
       this.cartService.removeCartItem(id).subscribe({
         next: (res: any) => {
-          console.log(res);
-          this.toastr.info('Item Removed From Cart', undefined, {
-            positionClass: 'toast-bottom-right',
+          // console.log(res);
+          this.toast.info({
+            detail: 'INFO',
+            summary: 'Item Removed From Cart',
+            
           });
           this.getCardProducts();
           this.calculateTotal();
@@ -67,23 +69,17 @@ export class CartComponent {
   // and still all users order is visible to one user
 
   increaseQuantity(cartId: string, productId: string, productQuantity: any) {
-    this.toastr.info('Please Wait...', undefined, {
-      timeOut: 6000,
-      closeButton: false,
-      positionClass: 'toast-bottom-right',
-      progressBar: true,
-    });
+    this.toast.info({ detail: 'INFO', summary: 'Please wait', sticky: true });
     const newQuantity = productQuantity + 1;
     this.updateCartItem(cartId, productId, newQuantity);
   }
 
   decreaseQuantity(cartId: string, productId: string, productQuantity: any) {
     if (productQuantity > 1) {
-      this.toastr.info('Please Wait...', undefined, {
-        timeOut: 6000,
-        closeButton: false,
-        positionClass: 'toast-bottom-right',
-        progressBar: true,
+      this.toast.info({
+        detail: 'INFO',
+        summary: 'Please Wait...',
+    
       });
       const newQuantity = productQuantity - 1;
       this.updateCartItem(cartId, productId, newQuantity);
@@ -104,8 +100,9 @@ export class CartComponent {
 
     this.cartService.updateCartItem(cartId, productData).subscribe({
       next: (res: any) => {
-        this.toastr.success('Cart Updated', undefined, {
-          positionClass: 'toast-bottom-right',
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'Cart updated',
         });
         this.getCardProducts();
       },

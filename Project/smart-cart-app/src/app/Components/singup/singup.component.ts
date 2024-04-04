@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
@@ -23,7 +23,7 @@ export class SingupComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toast: NgToastService
   ) {}
 
   //creating getters
@@ -51,14 +51,21 @@ export class SingupComponent {
       next: (res: any) => {
         console.log(res);
         this.isloading = false;
-        this.toastr.success('User Registration Successfully');
+        this.toast.success({
+          detail: 'SUCCESS',
+          summary: 'User Registration Successfully',
+        });
 
         this.router.navigate(['/']);
       },
       error: (error: any) => {
         console.log(error);
         this.isloading = false;
-        this.toastr.error(error.error.error.message);
+        this.toast.error({
+          detail: 'ERROR',
+          summary: error.error.error.message,
+          sticky: true,
+        });
       },
     });
     this.signUpForm.reset();
