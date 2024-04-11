@@ -1,5 +1,9 @@
 .login {
   /* background-color: red; */
+  background: url("../../../assets/images/bgImage.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
   height: 100vh;
   width: auto;
   display: flex;
@@ -7,7 +11,7 @@
   justify-content: center;
 }
 .innercontainer {
-  width: 70%;
+  width: 40%;
 }
 .rounded-t-5 {
   border-top-left-radius: 0.5rem;

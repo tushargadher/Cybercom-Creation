@@ -6,3 +6,6 @@ img {
   width: 80%;
   object-fit: contain;
 }
+img:hover {
+  cursor: pointer;
+}

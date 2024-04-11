@@ -22,7 +22,9 @@ export class ProductService {
   }
   getSingalProduct(id: any) {
     return this.http.get(
-      this.getSingalProductURL + id + '?populate[product_image][fields][1]=url'
+      this.getSingalProductURL +
+        id +
+        '?populate[product_image][fields][1]=url&populate[category][fields][0]=category_name'
     );
   }
   getCategories() {

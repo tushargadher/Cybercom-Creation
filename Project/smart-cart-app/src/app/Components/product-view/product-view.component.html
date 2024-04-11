@@ -69,5 +69,48 @@
         </div>
       </main>
     </div>
+    <div class="my-5">
+      <h2>Product May You Like</h2>
+      <div class="d-flex">
+        <div
+          class="card m-2 d-flex"
+          style="width: 18rem"
+          *ngFor="let product of productsData; let i = index"
+        >
+          <img
+            src="http://localhost:1337{{
+              product.attributes.product_image.data[0].attributes.url
+            }}"
+            class="p-3"
+            alt="{{ product.attributes.product_name }}"
+            (click)="viewProductDetails(product.id)"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.attributes.product_name }}</h5>
+            <p class="card-text">{{ product.attributes.price }} &#8377;</p>
+            <div class="d-flex justify-content-between">
+              <!-- <button class="btn btn-primary" (click)="addTocard(product.id, i)">
+              Add to cart
+              <span
+                class="spinner-border"
+                role="status"
+                *ngIf="isloading[i]"
+              ></span>
+            </button>
+
+            <button class="btn" (click)="addToWishlist(product.id, i)">
+              <i class="bi bi-heart mx-1" *ngIf="!iswishlistloading[i]"></i>
+              <span
+                class="spinner-border"
+                style="color: white"
+                role="status"
+                *ngIf="iswishlistloading[i]"
+              ></span>
+            </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

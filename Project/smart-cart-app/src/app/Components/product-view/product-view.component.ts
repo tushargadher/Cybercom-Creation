@@ -3,12 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { NgToastService } from 'ng-angular-popup';
+import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.css'],
 })
 export class ProductViewComponent {
+  productsData: any[] = [];
   isloading = false;
   productId = '';
   userID: number = 0;
@@ -17,16 +21,32 @@ export class ProductViewComponent {
     private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private router: Router
   ) {}
   ngOnInit(): void {
-    //get the product id from url
-    this.route.params.subscribe((params) => {
-      this.productId = params['id'];
-    });
-    this.userID = JSON.parse(sessionStorage.getItem('user_id')!);
+    this.route.params
+      .pipe(
+        switchMap((params) => {
+          this.productId = params['id'];
+          return this.productService.getSingalProduct(this.productId);
+        })
+      )
+      .subscribe({
+        next: (res: any) => {
+          this.product = res.data.attributes;
+          console.log(this.product);
 
-    this.getSingleProduct(this.productId);
+          if (this.product) {
+            this.getSimilarProduct(this.product.category.data.id);
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
+
+    this.userID = JSON.parse(sessionStorage.getItem('user_id')!);
   }
 
   //api call
@@ -34,9 +54,13 @@ export class ProductViewComponent {
   getSingleProduct(id: any) {
     this.productService.getSingalProduct(id).subscribe({
       next: (res: any) => {
-        console.log(res);
+        // console.log(res);
         this.product = res.data.attributes;
         console.log(this.product);
+
+        if (this.product) {
+          this.getSimilarProduct(this.product.category.data.id);
+        }
       },
       error: (error: any) => {
         console.log(error);
@@ -70,6 +94,21 @@ export class ProductViewComponent {
         console.log(error);
       },
     });
+  }
+  getSimilarProduct(categoryId: any) {
+    this.productService.getFilterProduct(categoryId).subscribe({
+      next: (res: any) => {
+        // console.log(res.data);
+        this.productsData = res.data;
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.toast.error(error.error.error.message);
+      },
+    });
+  }
+  viewProductDetails(productId: string) {
+    this.router.navigate([`/product-detail/${productId}`]);
   }
 }
 
